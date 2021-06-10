@@ -1,1 +1,8 @@
-/out/
+/out/**
+/spoj.iml
+/.idea/
+# Default ignored files
+/workspace.xml
+# Compiled class file
+*.class
+.*.xml
