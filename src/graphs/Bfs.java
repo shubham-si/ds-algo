@@ -46,7 +46,7 @@ class Bfs
              // vertex 0, 13, and 14 are single nodes
      );
 
-     // total number of nodes in the graph
+     // total number of nodes or vertex in the graph
      final int N = 15;
 
      // build a graph from the given edges

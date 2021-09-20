@@ -2,8 +2,8 @@ package arrays;
 
 /*
     [0....low-1] --> 0
-    [low....high-1] ---> ? <pivot> ==> 1
-    [high....n-1] ---> 2
+    [low....k-1] ---> ? <pivot> ==> 1
+    [k....n-1] ---> 2
  */
 
 // Sort an array of 0,1,2

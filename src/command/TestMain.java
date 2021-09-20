@@ -6,10 +6,11 @@ public class TestMain {
 
 		// Receiver
 		TV tv = new TV();
+		// Commands
 		TVOnCommand onTv = new TVOnCommand(tv);
 		TVOffCommand offTv = new TVOffCommand(tv);
 
-		// Invoker
+		// Invoker -> Receiver
 		Invoker remote = new Invoker(onTv);
 		remote.execute();
 		remote.setCommand(offTv);
