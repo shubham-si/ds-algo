@@ -28,14 +28,12 @@ class Graph
          adjList.add(new ArrayList<>());
      }
 
+     // adjList[0..n-1]List<>
      // add edges to the undirected graph : u <---> v
      for (Edge edge: edges)
      {
-         int src = edge.source;
-         int dest = edge.dest;
-
-         adjList.get(src).add(dest);
-         adjList.get(dest).add(src);
+         adjList.get(edge.source).add(edge.dest);
+         adjList.get(edge.dest).add(edge.source);
      }
  }
  

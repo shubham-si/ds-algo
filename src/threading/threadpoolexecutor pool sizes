@@ -1,0 +1,23 @@
+Rules of a ThreadPoolExecutor pool size
+
+The rules for the size of a ThreadPoolExecutor's pool are generally miss-understood, because it doesn't work the way that you think it ought to or in the way that you want it to.
+
+Take this example. Starting thread pool size is 1, core pool size is 5, max pool size is 10 and the queue is 100.
+
+Sun's way: as requests come in threads will be created up to 5, then tasks will be added to the queue until it reaches 100. When the queue is full new threads will be created up to maxPoolSize. Once all the threads are in use and the queue is full tasks will be rejected. As the queue reduces so does the number of active threads.
+
+User anticipated way: as requests come in threads will be created up to 10, then tasks will be added to the queue until it reaches 100 at which point they are rejected. The number of threads will rename at max until the queue is empty. When the queue is empty the threads will die off until there are corePoolSize left.
+
+The difference is that the users want to start increasing the pool size earlier and want the queue to be smaller, where as the Sun method want to keep the pool size small and only increase it once the load becomes to much.
+
+Here are Sun's rules for thread creation in simple terms:
+
+If the number of threads is less than the corePoolSize, create a new Thread to run a new task.
+If the number of threads is equal (or greater than) the corePoolSize, put the task into the queue.
+If the queue is full, and the number of threads is less than the maxPoolSize, create a new thread to run tasks in.
+If the queue is full, and the number of threads is greater than or equal to maxPoolSize, reject the task.
+The long and the short of it is that new threads are only created when the queue fills up, so if you're using an unbounded queue then the number of threads will not exceed corePoolSize.
+
+For a fuller explanation, get it from the horses mouth: ThreadPoolExecutor API documentation(https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html)
+
+https://www.logicbig.com/tutorials/core-java-tutorial/java-multi-threading/thread-pools.html

@@ -42,6 +42,7 @@ public class DfsUsingState {
     {
 		 Stack<Integer> stk = new Stack<Integer>();
 		 stk.push(vertex);
+		 // first visit
 		 state[vertex] = VertexState.Gray;
 
 		 while(!stk.isEmpty()) {

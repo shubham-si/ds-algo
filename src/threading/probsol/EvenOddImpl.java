@@ -30,12 +30,12 @@ class SharedState {
 class Printer implements Runnable{
     private SharedState sharedState;
     private PrinterType nextPrinterType;
-    private PrinterType currPrinterType;
+    private PrinterType printerType;
     int start, increment;
 
-    public Printer(int start, int increment, SharedState sharedState, PrinterType currPrinterType, PrinterType nextPrinterType) {
+    public Printer(int start, int increment, SharedState sharedState, PrinterType printerType, PrinterType nextPrinterType) {
         this.sharedState = sharedState;
-        this.currPrinterType = currPrinterType;
+        this.printerType = printerType;
         this.nextPrinterType = nextPrinterType;
         this.start = start;
         this.increment = increment;
@@ -45,7 +45,7 @@ class Printer implements Runnable{
     public void run() {
         while(this.start <= 50) {
             synchronized (sharedState) {
-                while(this.currPrinterType != sharedState.toPrint()) {
+                while(this.printerType != sharedState.toPrint()) {
                     try {
                         this.sharedState.wait();
                     } catch (InterruptedException e) {
