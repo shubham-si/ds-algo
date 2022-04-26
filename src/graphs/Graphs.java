@@ -16,7 +16,7 @@ class Edge
 //A class to represent a graph object
 class Graph
 {
- // A list of lists to represent an adjacency list
+ // A 2d-list of lists to represent an adjacency list
  List<List<Integer>> adjList = null;
 
  // Constructor (n vertex, e edges)

@@ -12,6 +12,7 @@ public class MinHeap {
 	public MinHeap(int capacity) {
 		this.capacity = capacity;
 		this.nodes = new ArrayList<Integer>(capacity);
+		//this.currSize = 0;
 	}
 	
 	// minHeap
@@ -145,6 +146,7 @@ public class MinHeap {
 	    minHeap.offer(12);
 	    System.out.println("The Min Heap is : " + minHeap.nodes.toString());	    
 	    minHeap.buildHeap();
+		System.out.println("The Min Heap is : " + minHeap.nodes.toString());
 	    System.out.println(minHeap.poll());
 	    System.out.println(minHeap.poll());
 	    System.out.println(minHeap.poll());

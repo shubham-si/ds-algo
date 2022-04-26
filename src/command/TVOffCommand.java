@@ -16,8 +16,6 @@ public class TVOffCommand implements Command{
 
 	@Override
 	public void undo() {
-		
-		
-	}
 
+	}
 }

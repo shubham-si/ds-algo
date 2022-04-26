@@ -17,14 +17,14 @@ class DNFAlgoImpl {
 
     }
     private static int[] getSortedArray(int []array) {
-        int st = 0, end = array.length-1, index=0;
-        while(index < end) {
-            switch (array[index]) {
-                case 0: swap(array, st, index); st++; index++;          // [0....low-1] --> 0
+        int st = 0, end = array.length-1, start=0;
+        while(start < end) {
+            switch (array[start]) {
+                case 0: swap(array, st, start); st++; start++;          // [0....low-1] --> 0
                         break;
-                case 1: index++;
+                case 1: start++;
                     break;
-                case 2: swap(array, index, end); end--;                // [high....n-1] ---> 2
+                case 2: swap(array, start, end); end--;                // [high....n-1] ---> 2
                     break;
             }
         }

@@ -17,8 +17,6 @@ public class TVOnCommand implements Command{
 
 	@Override
 	public void undo() {
-		
-		
-	}
 
+	}
 }

@@ -12,12 +12,12 @@ class Bfs
 	 public static void BFSIterative(Graph graph, int vertex, boolean[] discovered)
 	 {
 		 Queue<Integer> que = new LinkedList<Integer>();
+
 		 que.offer(vertex);
+		 discovered[vertex] = true;
 		 while(!que.isEmpty()) {
 
 			 int currVer = que.poll();
-			 discovered[vertex] = true;
-			
 			 System.out.println(currVer);
 			 
 			 for(int adj: graph.adjList.get(currVer)) {

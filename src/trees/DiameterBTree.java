@@ -24,18 +24,19 @@ public class DiameterBTree {
 	public static void main(String ...args) {
 		Node root = newNode(1);  
 	    root.left = newNode(2);  
-	    root.right = newNode(13);  
-	    root.left.left = newNode(3);  
-	    root.left.right = newNode(8);  
-	    root.left.left.left = newNode(4);
-	    root.left.left.right = newNode(5);
-	    root.left.left.right.left = newNode(6);
-	    root.left.left.right.left.right = newNode(7);
+	    root.right = newNode(3);
+	    root.left.left = newNode(4);
+	    root.left.right = newNode(5);
+		root.right = newNode(3);
+//	    root.left.left.left = newNode(4);
+//	    root.left.left.right = newNode(5);
+//	    root.left.left.right.left = newNode(6);
+//	    root.left.left.right.left.right = newNode(7);
 	    
-	    root.left.right.right = newNode(9);
-	    root.left.right.right.left = newNode(10);
-	    root.left.right.right.right = newNode(11);
-	    root.left.right.right.right.left = newNode(12);
+//	    root.left.right.right = newNode(9);
+//	    root.left.right.right.left = newNode(10);
+//	    root.left.right.right.right = newNode(11);
+//	    root.left.right.right.right.left = newNode(12);
 
 	    System.out.println("Diameter is " + diameter(root));  
 	}
@@ -62,6 +63,6 @@ public class DiameterBTree {
 	    		Math.max(1 + left_height + right_height, 				// either via-root or
 	                    1 + Math.max(left_height, right_height)));  	// if either path(l|r) is maximum
 	  
-	    return 1 + Math.max(left_height, right_height);  				// either max height
+	    return 1 + Math.max(left_height, right_height);  				// either max height including this node
 	} 
 }

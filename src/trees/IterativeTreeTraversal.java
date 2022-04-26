@@ -1,5 +1,7 @@
 package trees;
 
+// Stack<Pair<Node, State{0,1,2}>>
+
 public class IterativeTreeTraversal {
     static class Node {
         int data;

@@ -41,7 +41,6 @@ public class LevelOrderPrint {
 				System.out.print(node.data + " ");
 			}
 		}
-	
 	}
 	
 	private static void levelOrderWithSize(Node root) {
@@ -62,7 +61,6 @@ public class LevelOrderPrint {
 			}
 			System.out.println(); 
 		}
-	
 	}
 	
 	public static void main(String ...args) {

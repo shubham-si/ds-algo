@@ -15,7 +15,6 @@ public class TestMain {
 		remote.execute();
 		remote.setCommand(offTv);
 		remote.execute();
-		
-		
+
 	}
 }
