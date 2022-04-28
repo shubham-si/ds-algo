@@ -1,5 +1,8 @@
 package trees;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class RightView {
     static class Node {
         int data;
@@ -59,7 +62,43 @@ public class RightView {
         return root;
     }
 
+    // O(h) --> (stack calls)
+    static int printLeftViewWithH_Complexity(Node node, int level, int last_level) {
+        if(node == null) {
+            return last_level;
+        }
+        if (last_level < level) {
+            // last_level will update only once, when a new level shows up, the current node will be rightMost node only
+            System.out.print(node.data + " ");
+            last_level = level;
+        }
+        // change the order of call
+        last_level = printLeftViewWithH_Complexity(node.right, level + 1, last_level);
+        last_level = printLeftViewWithH_Complexity(node.left, level + 1, last_level);
+        return last_level;
+
+    }
+
+    // O(n)
+    static void printRightViewWithH_Complexity(Node node, int level, Map<Integer, Node> map) {
+        if(node == null) {
+            return;
+        }
+        if (!map.containsKey(level)) {
+            // first time this level is coming
+            map.put(level, node);
+        }
+        // change the order of call
+        printRightViewWithH_Complexity(node.right, level + 1, map);
+        printRightViewWithH_Complexity(node.left, level + 1, map);
+    }
+
     public static void main(String ...args) {
         Node root = getBinaryTree();
+        Map<Integer, Node> map = new TreeMap<>();
+        printRightViewWithH_Complexity(root, 0, map);
+        map.entrySet().stream().forEach((entry) -> {System.out.print(entry.getValue().data + " ");});
+        System.out.println("-------------------");
+        printLeftViewWithH_Complexity(root, 0 , -1);
     }
 }

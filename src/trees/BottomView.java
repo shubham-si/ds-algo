@@ -1,5 +1,7 @@
 package trees;
 
+import java.util.*;
+
 public class BottomView {
     static class Node {
         int data;
@@ -59,7 +61,32 @@ public class BottomView {
         return root;
     }
 
+    static void printBottomView(Node node, int dist, int level, Map<Integer, Map.Entry<Integer, Node>> viewMap) {
+        // do a pre-order traversal
+        if (node == null) {
+            return;
+        }
+        if (!viewMap.containsKey(dist) || level >= viewMap.get(dist).getKey()) {
+            viewMap.put(dist, PairUtil.Of(level, node));
+        }
+        printBottomView(node.left, dist - 1, level + 1, viewMap);
+        printBottomView(node.right, dist + 1, level + 1, viewMap);
+    }
+
+
     public static void main(String ...args) {
         Node root = getBinaryTree();
+        // map<dist, <level, Node>
+        Map<Integer, Map.Entry<Integer, Node>> viewMap = new TreeMap<>();
+        // printPreOrder(root);
+        printBottomView(root, 0, 0, viewMap);
+        viewMap.entrySet().stream().forEach((entry) -> {System.out.print(entry.getValue().getValue().data + " ");});
     }
 }
+
+
+
+/*
+    complexity --> O(nlogn) : TreeMap if order doesn't matter ie., print l -> r <dist>(...-3,-2,-1,0,1,2,3...)
+               --> O(n): HashMap
+ */
