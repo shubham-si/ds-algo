@@ -23,7 +23,7 @@ public class LargestAreaHistogram {
             int height = arr[stk.pop()];
 
             if (stk.empty()) {
-                maxArea = Math.max(maxArea, (arr.length)*height);
+                maxArea = Math.max(maxArea, arr.length * height);
             } else {
                 // next smaller heights to left and right
                 maxArea = Math.max(maxArea, (arr.length - stk.peek() - 1)*height);
