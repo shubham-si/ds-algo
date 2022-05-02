@@ -78,9 +78,10 @@ public class IterativeTreeTraversal {
             Map.Entry<Node, Integer> entry = stk.peek();
             stk.pop();
 
+            // 0: pre-order print(root) on first call
             if(entry.getValue() == 0) {
                 pre.add(entry.getKey().data);
-                // ele going left
+                // for in order it will print after left is done
                 stk.push(PairUtil.Of(entry.getKey(), 1));
 
                 if (entry.getKey().left != null) {
@@ -88,9 +89,10 @@ public class IterativeTreeTraversal {
                 }
             }
 
+            // 1: in-order print(root) on second call
             else if(entry.getValue() == 1) {
                 in.add(entry.getKey().data);
-                // ele going right
+                // for post order it will print after right is also done
                 stk.push(PairUtil.Of(entry.getKey(), 2));
 
                 if (entry.getKey().right != null) {
@@ -98,6 +100,7 @@ public class IterativeTreeTraversal {
                 }
             }
 
+            // 2: post-order print(root) on third call
             else {
                 post.add(entry.getKey().data);
             }
