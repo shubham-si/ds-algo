@@ -6,12 +6,13 @@ public class LargestAreaHistogram {
     public static int largestRectangleArea(int[] arr) {
         Stack<Integer> stk = new Stack<>();
         int maxArea = 0;
+        // assuming (index: -1) represents an empty stack
         for(int i = 0; i< arr.length; i++ ) {
             while(!stk.empty() && arr[i] <= arr[stk.peek()]) {
                 int height = arr[stk.pop()];
 
                 if (stk.empty()) {
-                    maxArea = Math.max(maxArea, i * height);
+                    maxArea = Math.max(maxArea, i * height);            // i => (i - (-1: empty stack) - 1)
                 } else {
                     // next smaller heights to left and right
                     maxArea = Math.max(maxArea, (i - stk.peek() - 1)*height);

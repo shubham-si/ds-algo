@@ -92,9 +92,10 @@ class MaxSumPath
         // update result only when considering leaf to leaf i.e., via root
         if (node.left != null && node.right != null) {
             res.res = Math.max(res.res, l + r + node.data);     // via - root leaf to leaf
+            return Math.max(l , r) + node.data;
         }
 
-        // either path
+        // either non-null path
         return (node.left == null) ? (r + node.data) : (l + node.data);
     }
 
