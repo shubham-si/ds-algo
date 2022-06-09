@@ -65,7 +65,7 @@ class MaxSumPath
         int l = maxSumBetweenAnyNodes(node.left, res);
         int r = maxSumBetweenAnyNodes(node.right, res);
 
-        int max_l_or_r = Math.max(l , r) + node.data;    // either path
+        int max_l_or_r = Math.max(node.data, Math.max(l , r) + node.data);    // either path or max node
 
         int temp = Math.max((l + r + node.data),     // via root
                 max_l_or_r);                        // either path

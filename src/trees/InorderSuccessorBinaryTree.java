@@ -97,12 +97,14 @@ public class InorderSuccessorBinaryTree {
 
 
     static void findInorderSuccesor(Node root, Node given) {
+        // case: 1
         if (given.right != null) {
             Node leftmost = leftMostNode(given.right);
             Node rs =  leftmost == null ? given.right : leftmost;
             System.out.print("Inorder Successor of "+given.data+" is "+rs.data);
             return;
         }
+        // if given is right most node of root
         Node rightmost = rightMostNode(root);
         if (rightmost == given) {
             System.out.print("Inorder Successor of "+given.data+" is null as last node");
@@ -121,7 +123,7 @@ public class InorderSuccessorBinaryTree {
         }
 
         if (root == given) {
-            // backtrack
+            // backtrack until get first i.e., node is left of it's parent
             return root;
         }
 

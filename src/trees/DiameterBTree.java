@@ -61,7 +61,7 @@ public class DiameterBTree {
 	    // for leaf to leaf don't consider max(l,r) + node(1) > as it can has any-path max(result)  > wrong answer
 		// either_path as max can give me any path max resulting in wrong answer
 	    ans.ans = Math.max(ans.ans, 							// max diameter so far
-				1 + left_height + right_height); 				// either via-root or
+				1 + left_height + right_height); 				// either via-root since diameter is leaf to leaf path
 
 	    return 1 + Math.max(left_height, right_height);  	    // max either path height including this node
 	} 
