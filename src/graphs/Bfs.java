@@ -15,6 +15,7 @@ class Bfs
 
 		 que.offer(vertex);
 		 discovered[vertex] = true;
+
 		 while(!que.isEmpty()) {
 
 			 int currVer = que.poll();
