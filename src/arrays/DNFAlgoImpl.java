@@ -1,9 +1,9 @@
 package arrays;
 
 /*
-    [0....low-1] --> 0
-    [low....k-1] ---> ? <pivot> ==> 1
-    [k....n-1] ---> 2
+    [low....mid-1] --> 0
+    [mid....high] ---> ? <pivot> ==> 1
+    [high....n-1] ---> 2
  */
 
 // Sort an array of 0,1,2
@@ -17,14 +17,20 @@ class DNFAlgoImpl {
 
     }
     private static int[] getSortedArray(int []array) {
-        int st = 0, end = array.length-1, start=0;
-        while(start < end) {
-            switch (array[start]) {
-                case 0: swap(array, st, start); st++; start++;          // [0....low-1] --> 0
-                        break;
-                case 1: start++;
+        int low = 0, mid=0;
+        int high = array.length-1;
+
+        while(mid < high) {
+            switch (array[mid]) {
+                case 0:
+                    swap(array, low, mid);
+                    low++; mid++;           // [0....mid-1] --> 0
                     break;
-                case 2: swap(array, start, end); end--;                // [high....n-1] ---> 2
+                case 1: mid++;
+                    break;
+                case 2:
+                    swap(array, mid, high);
+                    high--;                 // [high+1....n-1] ---> 2
                     break;
             }
         }

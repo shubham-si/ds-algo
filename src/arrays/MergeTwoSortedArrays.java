@@ -37,6 +37,7 @@ public class MergeTwoSortedArrays {
         arr2[j] = temp;
     }
 
+    // insert element at it's right place
     public static void insert(long arr2[], int j, int m) {
         // shift elements to left
         while(j < (m - 1)  && arr2[j] > arr2[j + 1]) {
@@ -47,6 +48,7 @@ public class MergeTwoSortedArrays {
 
     // O(log(m + n) * (n + m))
     // O(1) space
+    // gap method --> T(n/2) + T(n/4) .... T(1)
     public static void mergeLogN() {
 
     }

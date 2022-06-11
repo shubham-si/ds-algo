@@ -25,7 +25,7 @@ public class CountSubarraySumK {
         for(int i = 0 ; i<n; i++) {
             s = s + arr[i];
             if (s == sum ) {
-                // means the local subarray is 0 sum subarray
+                // means the 0...i subarray is 0 sum subarray
                 c++;
             }
             // left to "cumulative sum" how many subarray's present with (s-sum)
