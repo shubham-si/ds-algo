@@ -22,6 +22,7 @@ public class CountAll_Any_K_SumPaths {
         runningSum += root.data;
         map.put(runningSum, map.getOrDefault(runningSum, 0) + 1);
 
+        // get prefix sum present in current path
         int count = map.getOrDefault(runningSum - target, 0);
 
         int leftC = pathSumMap(root.left, runningSum, target, map);

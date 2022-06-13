@@ -10,6 +10,8 @@ public class PrintAllAny_K_SumPaths {
     // bottom-up approach
     // time: O(n * h * h) ., path list : (max --> h)
     // space: O(h)
+
+    /* Before calculation the root compute/done paths to it's left and right */
     void printKSumPaths(Node root, List<Integer> currPath, int target) {
 
         if (root == null) {
@@ -24,6 +26,7 @@ public class PrintAllAny_K_SumPaths {
         // check if there's any k sum path in the right sub-tree.
         printKSumPaths(root.right, currPath, target);
 
+        /* Before calculation the root compute/done paths to it's left and right */
 
         // check if there's any k sum path that terminates at this node
         // Traverse(backtrack) the entire path as there can be negative elements too
@@ -41,7 +44,4 @@ public class PrintAllAny_K_SumPaths {
         currPath.remove(currPath.size() - 1);
 
     }
-
-
-
 }
