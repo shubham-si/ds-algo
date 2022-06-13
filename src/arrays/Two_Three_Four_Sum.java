@@ -82,12 +82,12 @@ public class Two_Three_Four_Sum {
         List<List<Integer>> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            int target1 = target - arr[0];                     // (t - c)
+            int target1 = target - arr[0];                      // (t - c)
 
             for(int j = i + 1; j < n; j++) {
-                int     s = j + 1,
-                        e = n - 1,
-                        t = target1 - arr[j];                 // ((t-c) - d)
+                int     s = j + 1,                              // a
+                        e = n - 1,                              // b
+                        t = target1 - arr[j];                  // ((t-c) - d)
 
                 // TWO SUM
                 while (s < e) {
