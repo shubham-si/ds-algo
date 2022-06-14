@@ -10,6 +10,8 @@ public class CountAll_Any_K_SumPaths {
         // storing prefix sum of current running path
         // checking on each node if (prefix_sum - target) exits in map add (1) to count
         HashMap<Integer, Integer> map = new HashMap();
+
+        // prefix_sum_0: 1
         map.put(0, 1);
         return pathSumMap(root, 0, target, map);
     }
@@ -20,6 +22,7 @@ public class CountAll_Any_K_SumPaths {
         }
 
         runningSum += root.data;
+        // add current instance runningSum to map
         map.put(runningSum, map.getOrDefault(runningSum, 0) + 1);
 
         // get prefix sum present in current path
@@ -30,6 +33,7 @@ public class CountAll_Any_K_SumPaths {
 
         count += leftC + rightC;
 
+        // remove current instance runningSum from map
         map.put(runningSum, map.get(runningSum) - 1);
         return count;
     }
