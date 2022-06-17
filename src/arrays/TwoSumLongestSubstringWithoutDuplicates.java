@@ -6,6 +6,31 @@ public class TwoSumLongestSubstringWithoutDuplicates {
 
     // dababccabc --> abc
 
+    // O(2n)
+    // abcdefggh
+
+    // move 'l' 1 at a time until all distinct
+    int longestSubstringWithTwoNComplexity(String str) {
+        int res = 0;
+
+        int l=0, r=0;
+        Set<String> set = new HashSet<>();
+
+        while (r < str.length()) {
+            // remove and move 'l', while set contains 'str(r)'
+            while (set.contains(str.charAt(r))) {
+                set.remove(str.charAt(l));
+                l++;
+            }
+
+            res = Math.max(res, r - l + 1);
+            set.add(String.valueOf(str.charAt(r)));
+            r++;
+
+        }
+        return res;
+    }
+
     // O(N)
     // abcdefggh
 
@@ -30,32 +55,6 @@ public class TwoSumLongestSubstringWithoutDuplicates {
             r++;
 
         }
-        return res;
-    }
-
-
-    // O(2n)
-    // abcdefggh
-
-    // move 'l' 1 at a time until all distinct
-    int longestSubstringWithTwoNComplexity(String str) {
-        int res = 0;
-
-        int l=0, r=0;
-        Set<String> set = new HashSet<>();
-
-        while (r < str.length()) {
-            // remove and move 'l', while set contains 'str(r)'
-            while (set.contains(str.charAt(r))) {
-                set.remove(str.charAt(l));
-                l++;
-            }
-
-            res = Math.max(res, r - l + 1);
-            set.add(String.valueOf(str.charAt(r)));
-            r++;
-
-         }
         return res;
     }
 }

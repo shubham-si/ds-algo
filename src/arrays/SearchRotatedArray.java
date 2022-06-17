@@ -7,15 +7,16 @@ public class SearchRotatedArray {
     // non duplicates
     int search(int arr[], int l, int h, int key)
     {
-
         int st = 0, e = arr.length - 1, mid;
+
         while(st <= e) {
             mid = st + (e - st) / 2;
             if (arr[mid] == key) {
                 return mid;
             }
-            // that means [l..mid]: left part is sorted subarray
+
             if (arr[l] < arr[mid]) {
+                // that means [l..mid]: left part is sorted subarray
                 if (key >= arr[l] && key < arr[mid]) {
                     // answer lies here [l ... mid]
                     e = mid - 1;
