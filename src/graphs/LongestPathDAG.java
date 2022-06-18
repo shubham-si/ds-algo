@@ -11,7 +11,7 @@ public class LongestPathDAG {
     void longestPathUnWeighted(Graph graph, int node, int dp[], boolean []visited) {
         visited[node] = true;
 
-        for(int neighbour: graph.adjList.get(node)) {
+        for(int neighbour: graph.undirectedAdjList.get(node)) {
             if (!visited[neighbour]) {
                 longestPathUnWeighted(graph, neighbour, dp, visited);
             }
@@ -21,8 +21,9 @@ public class LongestPathDAG {
         }
     }
 
-    void longestPathWeightedDAG(Graph graph, int n, int weight[][], int source) {
-        // we do topological sort to get a order of dependencies or path from any node
+    // O(E + V)
+    void longestPathWeightedDAGWithSource(Graph graph, int n, int source) {
+        // we do topological sort to get a order of dependencies or path from any node to explore children
         Stack<Integer> stack = TopologicalSort.sort(graph, n);
         int dist[] = new int[n];
         Arrays.fill(dist, Integer.MIN_VALUE);
@@ -33,10 +34,10 @@ public class LongestPathDAG {
 
             // waiting for source node to come or non inf. node
             if (dist[node] != Integer.MIN_VALUE) {
-                for(int near: graph.adjList.get(node)) {
+                for(Edge edge: graph.weightedAdj.get(node)) {
                     // weight should be moved to edge property --> adj.node.prop
-                    if (dist[near] < (dist[node] + weight[node][near])) {
-                        dist[near] = dist[node] + weight[node][near];
+                    if (dist[edge.source] < (dist[node] + edge.weight)) {
+                        dist[edge.source] = dist[node] + edge.weight;
                     }
                 }
             }
@@ -54,3 +55,10 @@ public class LongestPathDAG {
 // NOTE: for all path longest from all sources after topological sort --> run dfs with each node in a loop
 
 
+// Bellmon ford: dp: with -ve weights + detect negative cycles  O(EV) -->
+    // add 1 vertices at each time and see how much we can go minimally with current set (0 <= i < (n-1))
+// dijkastra O(e + vlogv) +ve weight  shortest
+// bfs (nearest path to any node undirected graph)
+// bipartite + graph coloring
+// spanning trees
+// floyd warshall - all pair shortest path

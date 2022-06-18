@@ -22,10 +22,18 @@ public class TopologicalSort {
         return order;
     }
 
+    /*
+        for(i<--0 to (n-1)) {
+            !visited[i]
+                call dfs(graph, i, visited, stack)
+        }
+
+     */
+
     static void dfs(Graph graph, int node, boolean[] visited, Stack stack) {
         visited[node] = true;
 
-        for(Integer neighbour: graph.adjList.get(node)) {
+        for(Integer neighbour: graph.undirectedAdjList.get(node)) {
             if (!visited[neighbour]) {
                 dfs(graph, neighbour, visited, stack);
             }
@@ -39,7 +47,7 @@ public class TopologicalSort {
     void dfs(Graph graph, int node, boolean[] visited, Stack stack, int []postTime, int time) {
         visited[node] = true;
 
-        for(Integer neighbour: graph.adjList.get(node)) {
+        for(Integer neighbour: graph.undirectedAdjList.get(node)) {
             if (!visited[neighbour]) {
                 dfs(graph, neighbour, visited, stack);
             }

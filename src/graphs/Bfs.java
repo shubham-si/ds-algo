@@ -21,7 +21,7 @@ class Bfs
 			 int currVer = que.poll();
 			 System.out.println(currVer);
 			 
-			 for(int adj: graph.adjList.get(currVer)) {
+			 for(int adj: graph.undirectedAdjList.get(currVer)) {
 				 if (!discovered[adj]) {
 					 que.offer(adj);
 					 discovered[adj] = true;

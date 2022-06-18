@@ -16,7 +16,7 @@ public class PrePostTimeDfs {
 		 discovered[vertex] = true;
 		 pre[vertex] = time++;
 		 
-		 for(int adj: graph.adjList.get(vertex)) {
+		 for(int adj: graph.undirectedAdjList.get(vertex)) {
 			 if (!discovered[adj]) {
 				 computerPrePostTimings(graph, adj, discovered);
 			 }

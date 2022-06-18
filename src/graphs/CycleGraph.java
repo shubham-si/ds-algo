@@ -7,7 +7,7 @@ public class CycleGraph {
     // that means a cycle is present with dfs traversal
     boolean isCyclePresentInUndirectedGraph(int source, Graph graph, int parent, boolean []visited) {
         visited[source] = true;
-        for(int neighbour : graph.adjList.get(source)) {
+        for(int neighbour : graph.undirectedAdjList.get(source)) {
             if (!visited[neighbour]) {
                 // if cycle found somewhere keep the answer to true
                 if (isCyclePresentInUndirectedGraph(neighbour, graph, source, visited) == true) {
@@ -26,7 +26,8 @@ public class CycleGraph {
     boolean isCyclePresentInDirectedGraph(int source, Graph graph, boolean []visited, boolean []currentPathStack) {
         visited[source] = true;
         currentPathStack[source] = true;
-        for(int neighbour : graph.adjList.get(source)) {
+
+        for(int neighbour : graph.directedAdjList.get(source)) {
             // in current stack path if 'v' already visited
             if (currentPathStack[neighbour] == true) {
                 return true;

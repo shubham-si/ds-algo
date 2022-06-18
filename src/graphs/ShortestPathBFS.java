@@ -20,7 +20,7 @@ public class ShortestPathBFS {
         while (!q.isEmpty()) {
             int node = q.poll();
 
-            for (int adj : graph.adjList.get(node)) {
+            for (int adj : graph.undirectedAdjList.get(node)) {
                 if (!visited[adj]) {
                     visited[adj] = true;
                     q.offer(adj);

@@ -30,7 +30,7 @@ public class DfsUsingState {
     {
           state[u] = VertexState.Gray;
           System.out.print(u + " ");
-          for (int v : graph.adjList.get(u)) {
+          for (int v : graph.undirectedAdjList.get(u)) {
               if (state[v] == VertexState.White)
             	  runDFSRecursive(graph, v, state); 
           }
@@ -55,7 +55,7 @@ public class DfsUsingState {
 				 state[vertex] = VertexState.Black;
 			 }
 
-			 for(int adj: graph.adjList.get(currVer)) {
+			 for(int adj: graph.undirectedAdjList.get(currVer)) {
 				 if (state[vertex] == VertexState.White) {
 					 stk.push(adj);
 					 state[vertex] = VertexState.Gray;

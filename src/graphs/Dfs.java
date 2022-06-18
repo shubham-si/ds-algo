@@ -24,7 +24,7 @@ class Dfs
 				 discovered[currVer] = true;
 			 }
  
-			 for(int adj: graph.adjList.get(currVer)) {
+			 for(int adj: graph.undirectedAdjList.get(currVer)) {
 				 if (!discovered[adj]) {
 					 stk.push(adj);
 				 }
@@ -37,7 +37,7 @@ class Dfs
 	 {
 		 discovered[vertex] = true;
 		 System.out.print(vertex + " ");
-		 for(int adj: graph.adjList.get(vertex)) {
+		 for(int adj: graph.undirectedAdjList.get(vertex)) {
 			 if (!discovered[adj]) {
 				 DFSRecursive(graph, adj, discovered);
 			 }
