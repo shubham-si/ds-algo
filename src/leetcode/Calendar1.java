@@ -48,6 +48,7 @@ public class Calendar1 {
         if(leftStart!=null && start < treeMap.get(leftStart)) {
             return false;
         }
+        // OR
 
         // e > s1
         if(rightStart!=null && end > rightStart) {
