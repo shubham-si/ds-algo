@@ -14,7 +14,7 @@ Output
 [null, true, false, true]
  */
 public class Calendar1 {
-    // O(N*N)
+    // O(n2*logn)
     TreeMap<Integer,Integer> map = new TreeMap<>();
     boolean bookUsingCount(int start, int end) {
         // +1 start
@@ -38,7 +38,7 @@ public class Calendar1 {
 
 
 
-    // O(N*logN)
+    // O(nlogN)
     TreeMap<Integer,Integer> treeMap = new TreeMap<>();
     boolean book(int start, int end) {
         Integer leftStart = treeMap.floorKey(start);

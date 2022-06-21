@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.TreeMap;
 
 //triple booking not allowed
@@ -10,6 +12,7 @@ public class Calendar2 {
         map = new TreeMap<>();
     }
 
+    // worst: O(logN*(1.1 +1.2+1.3....1.(n-1))) => O(n2*logn)
     public boolean book(int start, int end) {
         map.put(start, map.getOrDefault(start,0) + 1);
         map.put(end, map.getOrDefault(end,0) - 1);
@@ -32,4 +35,39 @@ public class Calendar2 {
         }
         return true;
     }
+
+
+    // worst: O(logN*(N)) => O(n*logn)
+
+    // possible allowed bookings
+    List<List<Integer>> bookings;
+
+    // strictly overlapping intervals  ==> for each (s1,e1) <> (s,e) ==> if (max(s1,s):a < min(e1,e):b) => (a,b)
+    TreeMap<Integer,Integer> overlaps;
+
+    public boolean bookLinear(int start, int end) {
+        Integer left = overlaps.floorKey(start);
+        Integer right = overlaps.ceilingKey(start);
+
+        if(left != null &&  start < overlaps.get(left)) {
+            return false;
+        }
+        if(right != null && end > right) {
+            return false;
+        }
+
+        // find strictly overlaps between the bookings and current event
+        for(List<Integer> list: bookings) {
+            int startOverlap = Math.max(list.get(0), start);
+            int endOverlap = Math.min(list.get(1), end);
+
+            if(startOverlap < endOverlap) {
+                overlaps.put(startOverlap, endOverlap);
+            }
+        }
+
+        bookings.add(Arrays.asList(start,end));
+        return true;
+    }
+
 }
