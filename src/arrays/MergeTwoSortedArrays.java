@@ -24,7 +24,8 @@ public class MergeTwoSortedArrays {
             if (arr1[i] <= arr2[j]) {
                 i++;
             } else {
-                swap(arr1, i, arr2, j);
+                // arr[i] > arr[j]
+                swap(arr1, i, arr2, j);         // min at arr[i] <-- arr[j]
                 insert(arr2 , j, m);
             }
 
@@ -37,9 +38,9 @@ public class MergeTwoSortedArrays {
         arr2[j] = temp;
     }
 
-    // insert element at it's right place
+    // move element arr[j] at it's right place to the right in A2
     public static void insert(long arr2[], int j, int m) {
-        // shift elements to left
+        // move arr[j]
         while(j < (m - 1)  && arr2[j] > arr2[j + 1]) {
             swap(arr2, j , arr2, j+1);
             j++;
