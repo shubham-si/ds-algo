@@ -20,15 +20,15 @@ public class MergeTwoSortedArrays {
     public static void merge(long arr1[], long arr2[], int n, int m)
     {
         int i = 0, j = 0;
-        while(i < n && j < m) {
+        while(i < n) {
             if (arr1[i] <= arr2[j]) {
-                i++;
+                /* do nothing */
             } else {
                 // arr[i] > arr[j]
                 swap(arr1, i, arr2, j);         // min at arr[i] <-- arr[j]
-                insert(arr2 , j, m);
+                insert(arr2 , j, m);            // move arr2[j] to it's correct place in sorted arr2 moving right
             }
-
+            i++;
         }
     }
 
@@ -38,13 +38,30 @@ public class MergeTwoSortedArrays {
         arr2[j] = temp;
     }
 
-    // move element arr[j] at it's right place to the right in A2
+    // move element arr[j] at it's right place to the right in A2 by shifting elements
     public static void insert(long arr2[], int j, int m) {
         // move arr[j]
         while(j < (m - 1)  && arr2[j] > arr2[j + 1]) {
             swap(arr2, j , arr2, j+1);
             j++;
         }
+    }
+
+    public static void main(String[] args)
+    {
+
+        long ar1[] = { 1, 5, 9, 10, 15, 20 };
+        long ar2[] = { 2, 3, 8, 13 };
+        int m = ar1.length;
+        int n =ar2.length;
+        merge(ar1, ar2, m, n);
+
+        System.out.print("After Merging \nFirst Array: ");
+        for (int i = 0; i < m; i++)
+            System.out.print(ar1[i]+ " ");
+        System.out.print("\nSecond Array: ");
+        for (int i = 0; i < n; i++)
+            System.out.print(ar2[i]+ " ");
     }
 
     // O(log(m + n) * (n + m))

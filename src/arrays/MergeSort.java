@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 public class MergeSort {
 
+    // T(nlogn)
+    // S(n)
     static void merge(int []arr, int l ,int r, int m) {
         // Find sizes of two subarrays to be merged
-        int n1 = m - l + 1;
+        int n1 = m - l + 1;     // including 'm'
         int n2 = r - m;
 
         /* Create temp arrays */
