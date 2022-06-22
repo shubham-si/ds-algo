@@ -18,6 +18,7 @@ public class IsBST {
         if ((min != null && node.data <= min) || (max !=null && node.data >= max)) {
             return false;
         }
+        // node will be max on left and min on right
         return isBST(node.left, min, node.data) && isBST(node.right, node.data, max);
     }
 

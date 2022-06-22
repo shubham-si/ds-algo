@@ -75,8 +75,9 @@ public class ReverseList {
             c++;
         }
 
+        // curr pointing to start of next group or null(end)
         if (curr != null) {
-            // head beacomes last node in current reverse chain, whose next point to new head
+            // head becomes last node in current reverse chain, whose next point to new head (ie., prev from next call stack)
             head.next = reverseKGroupRecursive(curr, k);
         }
 
