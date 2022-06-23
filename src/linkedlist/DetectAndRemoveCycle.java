@@ -35,6 +35,7 @@ public class DetectAndRemoveCycle {
             // move slow 1 step and fast 2 steps
             slow = slow.next;
             fast = fast.next.next;
+
             if (slow == fast) {
                 // cycle found
                 // reset slow to start of LL

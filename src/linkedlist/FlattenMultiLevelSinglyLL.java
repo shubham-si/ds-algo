@@ -28,6 +28,7 @@ public class FlattenMultiLevelSinglyLL {
 
             // end of current level
             if (curr.next == null) {
+                // node in next down level in queue
                 curr.next = queue.poll();
             }
 
@@ -46,6 +47,7 @@ public class FlattenMultiLevelSinglyLL {
     // S(1)
     //
     public Node flattenSpaceOptimized(Node head) {
+
         return head;
     }
 }
