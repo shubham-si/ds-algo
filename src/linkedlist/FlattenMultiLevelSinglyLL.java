@@ -45,7 +45,7 @@ public class FlattenMultiLevelSinglyLL {
 
     // T(n)
     // S(1)
-    //
+    // Using last-ptr pointing to node having down child so that when (curr --> null), curr.next <-- last.down
     public Node flattenSpaceOptimized(Node head) {
 
         return head;

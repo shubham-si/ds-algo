@@ -7,14 +7,13 @@ public class KnapSack01 {
         int dp[][] = new int[n][W + 1];
 
         // base: (index == 0 and wt[0] <= W) ==> return val[0]
-        // w >= wt[0]
+        // all those: (w >= wt[0]) return val[0]
         for(int w = wt[0]; w <= W ; w++) {
             dp[0][w] = val[0];
         }
 
 
         for (int i = 1; i < n; i++) {
-
             for(int w = 0; w <= W; w++) {
 
                 int notTake = dp[i-1][w];
@@ -52,8 +51,8 @@ public class KnapSack01 {
        */
 
         for (int i = 1; i < n; i++) {
-
             for(int w = W; w >= 0; w--) {
+
                 int notTake = prev[w];
                 int take = Integer.MIN_VALUE;
 

@@ -33,6 +33,7 @@ public class ShortestPathBFS {
 
         // If we have to restore and display the shortest path from the source to some vertex u,
         if (!visited[u]) {
+            // disconnected graph
             System.out.println("not reachable");
             return;
         }

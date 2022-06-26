@@ -29,7 +29,7 @@ public class FractionalKnapSack{
             list.add(new Item(wt[i], val[i]));
         }
 
-        // decreasing order of (val[i] / wt[i])
+        // sort items in decreasing order of ratio: (val[i] / wt[i])
         Collections.sort(list);
         float res = 0;
 
@@ -39,8 +39,7 @@ public class FractionalKnapSack{
                 res = res + item.val;
                 W -= item.wt;
             } else {
-                // wt[i] > W
-                // take fraction from wt[i] i.e., W from above equation
+                // take fraction from wt[i] i.e., W (< wt[i])
                 // units: (W) * (val[i] / wt[i])
                 res += W * item.ratio;
                 break;

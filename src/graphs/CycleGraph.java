@@ -60,7 +60,7 @@ bool dfs(int v) {
     for (int u : adj[v]) {
         if (color[u] == 0) {
             parent[u] = v;
-            if (dfs(u))
+            if (dfs(u) == true)
                 return true;
         } else if (color[u] == 1) {
             cycle_end = v;
