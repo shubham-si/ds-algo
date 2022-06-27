@@ -3,6 +3,7 @@ package trees;
 import java.util.ArrayList;
 import java.util.List;
 
+// before evaluating root let's done with left and right in bottom up fashion
 public class PrintAllAny_K_SumPaths {
 
     List<List<Integer>> res = new ArrayList<>();
@@ -11,6 +12,7 @@ public class PrintAllAny_K_SumPaths {
     // time: O(n * h * h) ., path list : (max --> h)
     // space: O(h)
 
+    // Bottom-up fashion computation
     /* Before calculation the root compute/done paths to it's left and right */
     void printKSumPaths(Node root, List<Integer> currPath, int target) {
 

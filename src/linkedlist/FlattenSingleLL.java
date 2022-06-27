@@ -21,6 +21,7 @@ public class FlattenSingleLL {
     // concept like merging k sorted list
     // but from backwards adding node to down of current node/head i.e., (reverse call stack)
     Node flattenSinglyLL(Node head) {
+        // (n-2) at most
         if (head == null || head.next == null) {
             return head;
         }
