@@ -22,11 +22,12 @@ public class CountAll_Any_K_SumPaths {
         }
 
         runningSum += root.data;
-        // add current instance runningSum to map
-        map.put(runningSum, map.getOrDefault(runningSum, 0) + 1);
 
         // get prefix sum present in current path
         int count = map.getOrDefault(runningSum - target, 0);
+
+        // add current instance runningSum to map
+        map.put(runningSum, map.getOrDefault(runningSum, 0) + 1);
 
         int leftC = pathSumMap(root.left, runningSum, target, map);
         int rightC = pathSumMap(root.right, runningSum, target, map);

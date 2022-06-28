@@ -45,8 +45,37 @@ public class FlattenMultiLevelSinglyLL {
 
     // T(n)
     // S(1)
-    // Using last-ptr pointing to node having down child so that when (curr --> null), curr.next <-- last.down
+    // Using tail-ptr pointing to node having down child so that when (curr --> null), curr.next <-- last.down
     public Node flattenSpaceOptimized(Node head) {
+        if (head == null) {
+            return head;
+        }
+
+        Node tail = head;
+        while (tail.next != null) {
+            // points to last non null node if moving --->(sequentially)
+            tail = tail.next;
+        }
+
+        Node curr = head;
+        while(curr != null) {
+
+            if (curr.down != null) {
+
+                // link the down node to end of current list (tail pointer)
+                tail.next = curr.down;
+
+                // move tail to end of current list
+                tail = curr.down;
+
+                while(tail.next != null) {
+                    tail = tail.next;
+                }
+            }
+
+            curr = curr.next;
+
+        }
 
         return head;
     }
