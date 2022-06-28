@@ -68,8 +68,6 @@ public class FlattenMultiLevelSinglyLL {
                 tail.next = curr.down;
 
                 // move tail to end of current list
-                tail = curr.down;
-
                 while(tail.next != null) {
                     tail = tail.next;
                 }
