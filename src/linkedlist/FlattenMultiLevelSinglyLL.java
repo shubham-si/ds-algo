@@ -42,10 +42,12 @@ public class FlattenMultiLevelSinglyLL {
         return head;
     }
 
-
+    // https://www.codingninjas.com/codestudio/problems/flatten-the-multi-level-linked-list_839810?leftPanelTab=1
     // T(n)
     // S(1)
-    // Using tail-ptr pointing to node having down child so that when (curr --> null), curr.next <-- last.down
+
+    // Using tail-ptr pointing to end of current list (while curr.nexr != null)
+    // and so that node having down child > link the down node to end of current list (tail pointer)
     public Node flattenSpaceOptimized(Node head) {
         if (head == null) {
             return head;
