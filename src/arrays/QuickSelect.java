@@ -24,7 +24,7 @@ public class QuickSelect {
         int pivot = arr[r];
         // index of the smaller element
         int i = l-1;
-        for(int j=l;j<r;j++) {
+        for(int j=l; j<r; j++) {
             // If current element is smaller than the pivot
             if(arr[j] < pivot) {
                 i++;

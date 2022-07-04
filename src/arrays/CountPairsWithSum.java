@@ -5,14 +5,14 @@ import java.util.*;
 // (i,j) index should be different
 
 class CountPairsWithSum {
-    int getPairsCount(int[] arr, int n, int k) {
+    int getPairsCount(int[] arr, int n, int target) {
         Map<Integer,Integer> map = new HashMap();
 
         int t_c =0 ;
-        for(int i=0;i<arr.length;i++) {
+        for(int i=0; i<n; i++) {
             // contains target => add the frequency
-            if(map.containsKey(k-arr[i])) {
-                t_c+= map.get(k-arr[i]);
+            if(map.containsKey(target-arr[i])) {
+                t_c+= map.get(target-arr[i]);
             }
             if (map.containsKey(arr[i])) {
                 map.put(arr[i], map.get(arr[i]) + 1);
