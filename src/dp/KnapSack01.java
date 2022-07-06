@@ -2,6 +2,25 @@ package dp;
 
 public class KnapSack01 {
 
+    static int knapSackRecur(int idx, int W, int wt[], int val[], int [][]dp) {
+        if (idx == 0) {
+            return (wt[0] <= W) ? val[0] : 0;
+        }
+
+        if(dp[idx][W] != 0) {
+            return dp[idx][W];
+        }
+
+        int notTake = knapSackRecur(idx - 1, W, wt, val, dp);
+        int take = Integer.MIN_VALUE;
+
+        if (wt[idx] <= W) {
+            take = val[idx] + knapSackRecur(idx - 1, W - wt[idx], wt, val, dp);
+        }
+
+        return dp[idx][W] = Math.max(take, notTake);
+    }
+
     static int knapSack(int W, int wt[], int val[], int n)
     {
         int dp[][] = new int[n][W + 1];
@@ -65,29 +84,5 @@ public class KnapSack01 {
         }
 
         return prev[W];
-    }
-
-    static int knapSackRecur(int idx, int W, int wt[], int val[], int [][]dp) {
-        if (idx == 0 && wt[0] <= W) {
-            return val[0];
-        }
-
-        if (idx == 0 || W == 0) {
-            return 0;
-        }
-
-        if(dp[idx][W] != 0) {
-            return dp[idx][W];
-        }
-
-        int notTake = knapSackRecur(idx - 1, W, wt, val, dp);
-        int take = Integer.MIN_VALUE;
-
-        if (wt[idx] <= W) {
-            take = val[idx] + knapSackRecur(idx - 1, W - wt[idx], wt, val, dp);
-        }
-
-        dp[idx][W] = Math.max(take, notTake);
-        return dp[idx][W];
     }
 }

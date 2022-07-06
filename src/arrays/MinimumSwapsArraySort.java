@@ -28,7 +28,7 @@ public class MinimumSwapsArraySort {
 
             int u = i, cycleLen = 0;
 
-            // dfs (runs in a reversal order)
+            // dfs (runs in a reversal order) around cycle
             while (!visited[u]) {
                 visited[u] = true;
                 cycleLen++;
