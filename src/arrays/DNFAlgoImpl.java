@@ -17,7 +17,7 @@ class DNFAlgoImpl {
 
     }
     private static int[] getSortedArray(int []array) {
-        int low = 0, mid=0;
+        int low = 0, mid = 0;
         int high = array.length-1;
 
         while(mid < high) {

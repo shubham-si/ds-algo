@@ -15,7 +15,7 @@ public class SearchRotatedArray {
                 return mid;
             }
 
-            if (arr[l] < arr[mid]) {
+            if (arr[l] <= arr[mid]) {
                 // that means [l..mid]: left part is sorted subarray
                 if (key >= arr[l] && key < arr[mid]) {
                     // answer lies here [l ... mid]

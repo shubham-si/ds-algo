@@ -56,9 +56,9 @@ vector<int> parent;
 int cycle_start, cycle_end;
 
 bool dfs(int v) {
-    color[v] = 1;
+    color[v] = 1;                       // grey
     for (int u : adj[v]) {
-        if (color[u] == 0) {
+        if (color[u] == 0) {            // not visited
             parent[u] = v;
             if (dfs(u) == true)
                 return true;
@@ -68,7 +68,7 @@ bool dfs(int v) {
             return true;
         }
     }
-    color[v] = 2;
+    color[v] = 2;                           // black
     return false;
 }
 

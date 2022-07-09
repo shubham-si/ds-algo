@@ -109,7 +109,7 @@ public class Two_Three_Four_Sum {
                 while (j + 1 < n && arr[j + 1] == arr[j]) j++;
             }
             // avoid duplicates
-            while (i + 1 < n && arr[i = 1] == arr[i]) i++;
+            while (i + 1 < n && arr[i + 1] == arr[i]) i++;
         }
 
         return list;
