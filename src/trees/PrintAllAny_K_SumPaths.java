@@ -42,7 +42,7 @@ public class PrintAllAny_K_SumPaths {
                 res.add(currPath.subList(currPath.size() - 1, j));
         }
 
-        // remove the current node as it'd done
+        // remove the current node as it's done
         currPath.remove(currPath.size() - 1);
 
     }

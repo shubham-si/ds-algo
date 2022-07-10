@@ -7,7 +7,7 @@ public class KnapSack01 {
             return (wt[0] <= W) ? val[0] : 0;
         }
 
-        if(dp[idx][W] != 0) {
+        if(dp[idx][W] != -1) {
             return dp[idx][W];
         }
 

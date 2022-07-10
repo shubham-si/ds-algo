@@ -3,6 +3,7 @@ package dp;
 import java.util.Arrays;
 
 public class MinCoinChangeRequired {
+
     public int coinChange(int[] coins, int amount) {
         int n = coins.length;
         int[][] dp = new int[n][amount+1];

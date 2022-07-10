@@ -12,10 +12,10 @@ public class LargestAreaHistogram {
                 int height = arr[stk.pop()];
 
                 if (stk.empty()) {
-                    maxArea = Math.max(maxArea, i * height);            // i => (i - (-1: empty stack) - 1)
+                    maxArea = Math.max(maxArea, i * height);            // i => (i - (-1: empty stack) - 1) ie., single element present on stack
                 } else {
-                    // next smaller heights to left and right
-                    maxArea = Math.max(maxArea, (i - stk.peek() - 1)*height);
+                    // next smaller heights to left and right (not included)
+                    maxArea = Math.max(maxArea, (i - stk.peek() - 1) * height);
                 }
             }
             stk.push(i);
@@ -26,8 +26,8 @@ public class LargestAreaHistogram {
             if (stk.empty()) {
                 maxArea = Math.max(maxArea, arr.length * height);
             } else {
-                // next smaller heights to left and right
-                maxArea = Math.max(maxArea, (arr.length - stk.peek() - 1)*height);
+                // next smaller heights to left and right (not included)
+                maxArea = Math.max(maxArea, (arr.length - stk.peek() - 1) * height);
             }
         }
         return maxArea;

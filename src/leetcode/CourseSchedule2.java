@@ -13,10 +13,12 @@ public class CourseSchedule2 {
         for(int i=0;i< pre.length;i++) {
             adj.get(pre[i][1]).add(pre[i][0]);
         }
+
         int color[] = new int[N];
         Stack<Integer> stk = new Stack<>();
 
         for(int i = 0 ;i< N; i++) {
+            // while building topological order if cycle found return NA
             if(color[i] == 0 && isCycle(i, color, adj, stk)) {
                 return new int[]{};
             }

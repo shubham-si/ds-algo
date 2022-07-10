@@ -52,27 +52,27 @@ Directed graph using color with print path
 int n;
 vector<vector<int>> adj;
 vector<char> color;
-vector<int> parent;
+vector<int> parent;             // parent[i] = i
 int cycle_start, cycle_end;
 
-bool dfs(int v) {
-    color[v] = 1;                       // grey
-    for (int u : adj[v]) {
-        if (color[u] == 0) {            // not visited
-            parent[u] = v;
-            if (dfs(u) == true)
+bool dfs(int src) {
+    color[src] = 1;                       // grey
+    for (int neighbour : adj[src]) {
+        if (color[neighbour] == 0) {            // not visited
+            parent[neighbour] = src;
+            if (dfs(neighbour) == true)
                 return true;
-        } else if (color[u] == 1) {
-            cycle_end = v;
-            cycle_start = u;
+        } else if (color[neighbour] == 1) {         // grey
+            cycle_end = src;
+            cycle_start = neighbour;                // actual_originator of dfs i.e., 1st call to dfs
             return true;
         }
     }
-    color[v] = 2;                           // black
+    color[src] = 2;                           // black
     return false;
 }
 
-void find_cycle() {
+void print_cycle() {
     color.assign(n, 0);
     parent.assign(n, -1);
     cycle_start = -1;
@@ -86,10 +86,14 @@ void find_cycle() {
         cout << "Acyclic" << endl;
     } else {
         vector<int> cycle;
-        cycle.push_back(cycle_start);
-        for (int v = cycle_end; v != cycle_start; v = parent[v])
+
+        // backtrack
+        for (int v = cycle_end; v != cycle_start; v = parent[v]) {
             cycle.push_back(v);
+        }
+
         cycle.push_back(cycle_start);
+
         reverse(cycle.begin(), cycle.end());
 
         cout << "Cycle found: ";

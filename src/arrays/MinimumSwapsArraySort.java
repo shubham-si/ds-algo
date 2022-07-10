@@ -29,6 +29,7 @@ public class MinimumSwapsArraySort {
             int u = i, cycleLen = 0;
 
             // dfs (runs in a reversal order) around cycle
+            // trace back cyclic path
             while (!visited[u]) {
                 visited[u] = true;
                 cycleLen++;
@@ -80,7 +81,7 @@ public class MinimumSwapsArraySort {
             swap(pairs, i, pairs.get(i).getValue());
 
             // decrement(i), & check again the updated pair swapped(at 'i'),
-            // comes to org. position as in given array ie., ( i == pairs.get(i).getValue())
+            // whether comes to org. position as in given array ie., ( i == pairs.get(i).getValue())
             i--;
         }
 
