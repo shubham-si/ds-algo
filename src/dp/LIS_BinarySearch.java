@@ -9,41 +9,12 @@ import java.util.TreeSet;
 
 public class LIS_BinarySearch {
 
-    // T(nlogn)
-    public int binarySearchWithLIS(int[] arr, int n) {
-
-        // list will contain sorted index|ele
-        List<Integer> list = new ArrayList<>();
-
-        int lenLIS = 1;
-        list.add(arr[0]);
-
-        for (int i = 1 ; i < n; i++) {
-
-            if (arr[i] > list.get(lenLIS - 1)) {
-                list.add(arr[i]);
-                lenLIS++;
-
-            } else {
-                // since set is sorted set
-                // lower_bound(ele): returns first_index: arr[index] >= ele
-                int ceil = LowerUpperBound.lower_bound((Integer[]) list.toArray(), lenLIS, arr[i]);
-                list.set(ceil, arr[i]);
-            }
-
-        }
-
-        return lenLIS;
-
-    }
-
-    // using inbuilt set.ceiling() ~ lower_bound()
+    // using inbuilt set.ceiling() ~ lower_bound() c++
     public int lengthOfLIS(int[] arr) {
         int n = arr.length;
 
         // list containing sorted index|ele
         TreeSet<Integer> set = new TreeSet<>();
-
 
         int len = 1;
         set.add(arr[0]);
@@ -56,6 +27,7 @@ public class LIS_BinarySearch {
 
             } else {
                 // since set is sorted set
+                // returns ceil: arr[ceil] >= arr[i]
                 Integer ceil = set.ceiling(arr[i]);
 
                 set.remove(ceil);
