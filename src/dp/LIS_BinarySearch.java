@@ -5,6 +5,7 @@ import arrays.LowerUpperBound;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
 public class LIS_BinarySearch {
 
@@ -33,6 +34,37 @@ public class LIS_BinarySearch {
         }
 
         return lenLIS;
+
+    }
+
+    // using inbuilt set.ceiling() ~ lower_bound()
+    public int lengthOfLIS(int[] arr) {
+        int n = arr.length;
+
+        // list containing sorted index|ele
+        TreeSet<Integer> set = new TreeSet<>();
+
+
+        int len = 1;
+        set.add(arr[0]);
+
+        for (int i = 1 ; i < n; i++) {
+
+            if (arr[i] > set.last()) {
+
+                len++;
+
+            } else {
+                // since set is sorted set
+                Integer ceil = set.ceiling(arr[i]);
+
+                set.remove(ceil);
+
+            }
+            set.add(arr[i]);
+        }
+
+        return len;
 
     }
 

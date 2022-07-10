@@ -23,6 +23,8 @@ package arrays;
  */
 public class LowerUpperBound {
 
+    // ~ set.ceiling()
+    // returns index i: arr[i] >= ele
     public static int lower_bound(Integer []arr, int n, int ele) {
 
         // Note that here high index is set to n instead of n - 1.
@@ -41,6 +43,8 @@ public class LowerUpperBound {
         return low;
     }
 
+    // ~ set.higher()
+    // returns index i: arr[i] > ele
     public static int upper_bound(Integer []arr, int n, int ele) {
 
         // Note that here high index is set to n instead of n - 1.
