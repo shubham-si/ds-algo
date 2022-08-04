@@ -10,6 +10,7 @@ public class LIS {
         int n = arr.length;
         int dp[] = new int[n];
 
+        // all will be 1-length LIS
         Arrays.fill(dp, 1);
 
         int par[] = new int[n];

@@ -14,11 +14,10 @@ class CountPairsWithSum {
             if(map.containsKey(target-arr[i])) {
                 t_c+= map.get(target-arr[i]);
             }
-            if (map.containsKey(arr[i])) {
-                map.put(arr[i], map.get(arr[i]) + 1);
-            }else {
-                map.put(arr[i], 1);
+            if (!map.containsKey(arr[i])) {
+                map.put(arr[i], 0);
             }
+            map.put(arr[i], map.get(arr[i]) + 1);
         }
         return t_c;
     }
