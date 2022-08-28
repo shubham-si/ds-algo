@@ -1,4 +1,4 @@
-package arrays;
+package stacks;
 
 import java.util.Stack;
 
@@ -8,7 +8,7 @@ public class LargestAreaHistogram {
         int maxArea = 0;
         // assuming (index: -1) represents an empty stack
         for(int i = 0; i< arr.length; i++ ) {
-            while(!stk.empty() && arr[i] <= arr[stk.peek()]) {
+            while(!stk.empty() && arr[i] <= arr[stk.peek()]) {              // incoming element is <= stack.top()
                 int height = arr[stk.pop()];
 
                 if (stk.empty()) {

@@ -84,7 +84,7 @@ public class MinHeap {
 		if (right < this.currSize && this.nodes.get(right) < this.nodes.get(smallest)) {
 			smallest = right;
 		}
-		if (i!=smallest) {
+		if (i != smallest) {
 			this.swap(i,smallest);
 			this.minHeapify(smallest);
 		}
@@ -101,7 +101,7 @@ public class MinHeap {
 		if (right < this.currSize && this.nodes.get(right) > this.nodes.get(largest)) {
 			largest = right;
 		}
-		if (i!=largest) {
+		if (i != largest) {
 			this.swap(i,largest);
 			this.minHeapify(largest);
 		}
@@ -109,14 +109,14 @@ public class MinHeap {
 	
 	// 0 based indexing
 	public void buildHeap() {
-		for(int i = this.parent(this.currSize); i>=0 ;i--) {
+		for(int i = this.parent(this.currSize); i >= 0 ;i--) {
 			this.minHeapify(i);
 		}
 	}
 	
 	// 0 based indexing
 	public Integer parent(int i) {
-		return (i-1)/2;
+		return (i - 1) / 2;
 	}
 	
 	// 0 based indexing
@@ -128,11 +128,11 @@ public class MinHeap {
 	}
 	
 	private Integer left(int i) {
-		return (2*i+1);
+		return (2*i + 1);
 	}
 	
 	private Integer right(int i) {
-		return (2*i+2);
+		return (2*i + 2);
 	}
 	
 	public static void main(String ...strings) {
