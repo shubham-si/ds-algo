@@ -20,7 +20,7 @@ public class Calendar2 {
         int c = 0;
         for(Integer freq: map.values()) {
             c += freq;
-            if (c >= 3) {
+            if (c > 2) {
                 map.put(start, map.get(start) - 1);
                 map.put(end, map.get(end) + 1);
 
@@ -49,9 +49,12 @@ public class Calendar2 {
         Integer left = overlaps.floorKey(start);
         Integer right = overlaps.ceilingKey(start);
 
+        // leftStart <= start < map.get(leftStart)
         if(left != null &&  start < overlaps.get(left)) {
             return false;
         }
+
+        // start <= rightStart < end
         if(right != null && end > right) {
             return false;
         }

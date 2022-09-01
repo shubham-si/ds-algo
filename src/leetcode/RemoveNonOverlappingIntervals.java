@@ -23,7 +23,7 @@ public class RemoveNonOverlappingIntervals {
             if (intervals[curr][0] < intervals[prev][1]) {
                 count++;
                 // if curr end time <= prev end time
-                // remove prev i.e., end = min(prev_end, curr_end) so chances of overlapping decreases
+                // remove i.e., update prev i.e., end = min(prev_end, curr_end) so chances of overlapping decreases
                 if(intervals[curr][1] <= intervals[prev][1]) {
                     prev = curr;
                 }

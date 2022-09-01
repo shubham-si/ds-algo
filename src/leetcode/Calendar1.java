@@ -44,13 +44,13 @@ public class Calendar1 {
         Integer leftStart = treeMap.floorKey(start);
         Integer rightStart = treeMap.ceilingKey(start);
 
-        // s < e1
+        // leftStart <= start < map.get(leftStart)
         if(leftStart != null && start < treeMap.get(leftStart)) {
             return false;
         }
         // OR
 
-        // e > s1
+        // start <= rightStart < end
         if(rightStart != null && end > rightStart) {
             return false;
         }
