@@ -1,0 +1,93 @@
+package leetcode;
+import trees.PairUtil;
+
+import java.util.*;
+
+// https://leetcode.com/problems/split-array-into-consecutive-subsequences
+
+/*
+    You are given an integer array nums that is sorted in non-decreasing order.
+
+    Determine if it is possible to split nums into one or more subsequences such that both of the following conditions are true:
+
+        Each subsequence is a consecutive increasing sequence (i.e. each integer is exactly one more than the previous integer).
+        All subsequences have a length of 3 or more.
+        Return true if you can split nums according to the above conditions, or false otherwise.
+
+    A subsequence of an array is a new array that is formed from
+    the original array by deleting some (can be none) of the elements without disturbing the relative positions of the remaining elements.
+    (i.e., [1,3,5] is a subsequence of [1,2,3,4,5] while [1,3,2] is not).
+
+    Note** >> (without disturbing the relative positions of the remaining elements)
+
+
+    Input: nums = [1,2,3,3,4,4,5,5]
+    Output: true
+    Explanation: nums can be split into the following subsequences:
+    [[1],[2],[3],3,[4],4,[5],5] --> 1, 2, 3, 4, 5
+    [1,2,3,[3],4,[4],5,[5]] --> 3, 4, 5
+
+    Input: nums = [1,2,3,3,4,5]
+    Output: true
+    Explanation: nums can be split into the following subsequences:
+    [1,2,3,3,4,5] --> 1, 2, 3
+    [1,2,3,3,4,5] --> 3, 4, 5
+
+    Input: nums = [1,2,3,4,4,5]
+    Output: false
+    Explanation: It is impossible to split nums into consecutive increasing subsequences of length 3 or more.
+ */
+
+public class SplitArrayIntoConsecutiveSubsequence {
+
+    public boolean isPossible(int[] nums) {
+
+        // Pair<st_num, end_num>  ==> length = (end_num - st_num + 1)
+        PriorityQueue<Map.Entry<Integer, Integer> > pq = new PriorityQueue<>((a,b) -> {
+            if (a.getValue().equals(b.getValue())) {
+                // greedy: sort by length if end values are same
+                // k = 3 => [1,3],[2,3] => [2,3], [1,3] so that if 4 comes it goes to [2,3]
+                int la = a.getValue() - a.getKey() + 1;
+                int lb = b.getValue() - b.getKey() + 1;
+
+                return la - lb;
+            }
+            // else sort pairs by end_value
+            return a.getValue() - b.getValue();
+        });
+
+        for(int num: nums) {
+
+            while (!pq.isEmpty() && (pq.peek().getValue() + 1) < num) {
+                // current pq.peek() bucket is done, since array sorted in non-decreasing order
+                Map.Entry<Integer, Integer> peek = pq.poll();
+                int lenBucket =  peek.getValue() - peek.getKey() + 1;
+                if (lenBucket < 3) {
+                    return false;
+                }
+            }
+
+
+            if (pq.isEmpty() || pq.peek().getValue() == num) {
+                // start a new bucket
+                pq.offer(PairUtil.Of(num, num));
+            } else {
+                // (pq.peek().getValue() + 1) >= num : update end for the peek pair
+                Map.Entry<Integer, Integer> peek = pq.poll();
+                pq.offer(PairUtil.Of(peek.getKey(), num));
+            }
+
+        }
+
+        // leftovers
+        while(!pq.isEmpty()) {
+            Map.Entry<Integer, Integer> peek = pq.poll();
+            int lenBucket =  peek.getValue() - peek.getKey() + 1;
+            if (lenBucket < 3) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

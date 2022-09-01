@@ -37,9 +37,6 @@ class Graph
              undirectedAdjList.add(new ArrayList<>());
              weightedAdj.add(new ArrayList<>());
          }
-         for (int i = 0; i < N; i++) {
-             undirectedAdjList.add(new ArrayList<>());
-         }
 
          // adjList[0..n-1]List<>
          // add edges to the undirected graph : u <---> v

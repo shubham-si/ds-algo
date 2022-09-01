@@ -62,7 +62,7 @@ public class CoinChangeWays {
         int[]prev = new int[amount+1];
         int[]curr = new int[amount+1];
 
-        for(int t = 0 ; t<= amount; t++) {
+        for(int t = 0 ; t <= amount; t++) {
             prev[t] = (t % coins[0]) == 0  ? 1 : 0;
         }
 

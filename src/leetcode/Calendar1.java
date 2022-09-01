@@ -45,13 +45,13 @@ public class Calendar1 {
         Integer rightStart = treeMap.ceilingKey(start);
 
         // s < e1
-        if(leftStart!=null && start < treeMap.get(leftStart)) {
+        if(leftStart != null && start < treeMap.get(leftStart)) {
             return false;
         }
         // OR
 
         // e > s1
-        if(rightStart!=null && end > rightStart) {
+        if(rightStart != null && end > rightStart) {
             return false;
         }
         treeMap.put(start,end);
