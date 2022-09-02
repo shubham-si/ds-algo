@@ -1,6 +1,7 @@
 package segmentTrees;
 
 public class SegmentTree {
+
     class SegmentTreeNode {
         public int start, end;
         // You can add other additional attributes
@@ -125,12 +126,13 @@ public class SegmentTree {
         if( node == null || l > node.end || r < node.start) {
             return 0;
         }
-        // {start...{l,r}...end}
-        if (node.start <= l && node.end >= r) {
+        // {start:{l,r}:end}
+        if (node.start == l && node.end == r) {
             return node.sum;
         }
 
         int mid = node.start + (node.end - node.start) / 2;
+
         // {l:r} completely lies on left side
         if (r <= mid) {
             return queryMin(node.left, l , r);

@@ -9,7 +9,7 @@ public class DisjointSetUnionFind {
     public DisjointSetUnionFind(int N) {
         this.N = N;
         this.parent = new int[N];
-        this.rank = new int[N];
+        this.rank = new int[N];         // {...0...}
 
         for(int i = 0; i < N; i++) {
             parent[i] = i;
