@@ -25,6 +25,7 @@ public class LongestPathUndirectedGraph {
         // DFS from a random node and then see farthest node l1 from it
         dfs(randomNode, graph, new boolean[n], 0);
 
+        maxCount = Integer.MIN_VALUE;
         //2nd dfs from l1
         // DFS from l1 and check the farthest node from it
         dfs(l1, graph, new boolean[n], 0);

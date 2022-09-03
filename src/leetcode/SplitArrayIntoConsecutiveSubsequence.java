@@ -40,13 +40,16 @@ import java.util.*;
 
 public class SplitArrayIntoConsecutiveSubsequence {
 
-    public boolean isPossible(int[] nums) {
+    // isPossibleUsingPQueue()
+    // isPossibleUsingMaps()
+
+    public boolean isPossibleUsingPQueue(int[] nums) {
 
         // Pair<st_num, end_num>  ==> length = (end_num - st_num + 1)
         PriorityQueue<Map.Entry<Integer, Integer> > pq = new PriorityQueue<>((a,b) -> {
             if (a.getValue().equals(b.getValue())) {
                 // greedy: sort by length if end values are same
-                // k = 3 => [1,3],[2,3] => [2,3], [1,3] so that if 4 comes it goes to [2,3]
+                // k = 3 => [1..3],[2..3] => [2,3], [1,3] so that if 4 comes it goes to [2,3]
                 int la = a.getValue() - a.getKey() + 1;
                 int lb = b.getValue() - b.getKey() + 1;
 
@@ -73,6 +76,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
                 pq.offer(PairUtil.Of(num, num));
             } else {
                 // (pq.peek().getValue() + 1) >= num : update end for the peek pair
+                // or append element to the top bucket
                 Map.Entry<Integer, Integer> peek = pq.poll();
                 pq.offer(PairUtil.Of(peek.getKey(), num));
             }
@@ -89,5 +93,51 @@ public class SplitArrayIntoConsecutiveSubsequence {
         }
 
         return true;
+    }
+
+    public boolean isPossibleUsingMaps(int[] nums) {
+        HashMap<Integer, Integer> freq = new HashMap<>();
+
+        // hypothetical map -> which tells current num can be part of some bucket
+        HashMap<Integer, Integer> followMap = new HashMap<>();
+
+        for(int num: nums) {
+            freq.put(num, freq.getOrDefault(num , 0) + 1);
+        }
+
+        for(int num: nums) {
+            if (freq.get(num) == 0) {
+                // this num is already processed and part of some prev bucket
+                continue;
+            }
+
+            // this num can be part of some previous bucket of len(>=3)
+            if (followMap.getOrDefault(num, 0) > 0) {
+
+                followMap.put(num, followMap.get(num) - 1);
+                freq.put(num, freq.get(num) - 1);
+
+                // add room for next number possibility
+                followMap.put(num + 1, followMap.getOrDefault(num + 1 , 0) + 1);
+            } else {
+
+                // check occurence for next 3 numbers
+                for (int i = num; i < (num + 3); i++) {
+                    if (freq.getOrDefault(i, 0) <= 0) {
+                        return false;
+                    }
+                    freq.put(i, freq.get(i) - 1);
+                }
+
+                // add room for next number possibility after (num, num + 1, num + 2)
+                followMap.put(num + 3, followMap.getOrDefault(num + 3 , 0) + 1);
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.print(new SplitArrayIntoConsecutiveSubsequence().isPossibleUsingMaps(new int[]{1,2,3,3,4,5}));
     }
 }

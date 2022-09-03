@@ -25,7 +25,9 @@ class Graph {
 
     List<List<Integer>> undirectedAdjList = null;
     List<List<Integer>> directedAdjList = null;
-    List<List<Edge>> weightedAdj = null;
+
+    List<List<Edge>> weightedUnDirectedAdj = null;
+    List<List<Edge>> weightedDirectedAdj = null;
 
     Graph(List<Edge> edges, int N) {
         this.V = N;
@@ -33,23 +35,30 @@ class Graph {
 
         directedAdjList = new ArrayList<>();
         undirectedAdjList = new ArrayList<>();
-        weightedAdj = new ArrayList<>();
+
+        weightedDirectedAdj = new ArrayList<>();
+        weightedUnDirectedAdj = new ArrayList<>();
 
         for (int i = 0; i < N; i++) {
             directedAdjList.add(new ArrayList<Integer>());
             undirectedAdjList.add(new ArrayList<Integer>());
-            weightedAdj.add(new ArrayList<Edge>());
+
+            weightedDirectedAdj.add(new ArrayList<Edge>());
+            weightedUnDirectedAdj.add(new ArrayList<Edge>());
         }
 
         // adjList[0..n-1]List<>
         // add edges to the undirected graph : u <---> v
         for (Edge edge : edges) {
-            directedAdjList.get(edge.source).add(edge.dest);
-
             undirectedAdjList.get(edge.source).add(edge.dest);
             undirectedAdjList.get(edge.dest).add(edge.source);
 
-            weightedAdj.get(edge.source).add(edge);
+            directedAdjList.get(edge.source).add(edge.dest);
+            weightedDirectedAdj.get(edge.source).add(edge);
+
+            weightedUnDirectedAdj.get(edge.source).add(edge);
+            weightedUnDirectedAdj.get(edge.dest).add(edge);
+
         }
     }
 }

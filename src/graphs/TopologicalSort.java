@@ -33,7 +33,7 @@ public class TopologicalSort {
     static void dfs(Graph graph, int node, boolean[] visited, Stack stack) {
         visited[node] = true;
 
-        for(Integer neighbour: graph.undirectedAdjList.get(node)) {
+        for(Integer neighbour: graph.directedAdjList.get(node)) {
             if (!visited[neighbour]) {
                 dfs(graph, neighbour, visited, stack);
             }
@@ -47,7 +47,7 @@ public class TopologicalSort {
     void dfs(Graph graph, int node, boolean[] visited, Stack stack, int []postTime, int time) {
         visited[node] = true;
 
-        for(Integer neighbour: graph.undirectedAdjList.get(node)) {
+        for(Integer neighbour: graph.directedAdjList.get(node)) {
             if (!visited[neighbour]) {
                 dfs(graph, neighbour, visited, stack);
             }

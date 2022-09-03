@@ -34,10 +34,10 @@ public class LongestPathDAG {
 
             // waiting for source node to come or non inf. node
             if (dist[node] != Integer.MIN_VALUE) {
-                for(Edge edge: graph.weightedAdj.get(node)) {
+                for(Edge edge: graph.weightedDirectedAdj.get(node)) {
                     // weight should be moved to edge property --> adj.node.prop
-                    if (dist[edge.source] < (dist[node] + edge.weight)) {
-                        dist[edge.source] = dist[node] + edge.weight;
+                    if (dist[edge.dest] < (dist[node] + edge.weight)) {
+                        dist[edge.dest] = dist[node] + edge.weight;
                     }
                 }
             }

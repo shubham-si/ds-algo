@@ -30,11 +30,11 @@ public class Dijkastra {
             pq.poll();
 
             // all edges going from vertex (u)
-            for (Edge edge: graph.weightedAdj.get(minCostVertex)) {
+            for (Edge edge: graph.weightedDirectedAdj.get(minCostVertex)) {
                 // edge.source === minCostVertex
 
-                if (dist[edge.dest] > (dist[edge.source] + edge.weight) ) {
-                    dist[edge.dest] = dist[edge.source] + edge.weight;
+                if (dist[edge.dest] > (dist[minCostVertex] + edge.weight) ) {
+                    dist[edge.dest] = dist[minCostVertex] + edge.weight;
 
                     pq.offer(PairUtil.Of(edge.dest, dist[edge.dest]));
                 }

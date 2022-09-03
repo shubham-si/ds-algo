@@ -28,22 +28,22 @@ public class DisjointSetUnionFind {
 
     // T(logN)
     public void union(int u, int v) {
-        u = find(u);
-        v = find(v);
+        int pu = find(u);
+        int pv = find(v);
 
-        if(u != v) {
-            if (rank[u] < rank[v]) {
-                // swap(u,v) ==> assuming (v --> u), u have higher rank than v
-                int t = u;
-                u = v ;
-                v = t;
+        if(pu != pv) {
+            if (rank[pu] < rank[pv]) {
+                // swap(pu,pv) ==> assuming (pv --> pu), pu has higher rank than pv
+                int t = pu;
+                pu = pv ;
+                pv = t;
             }
 
             // v --> u
-            parent[v] = u;
+            parent[pv] = pu;
 
-            if (rank[u] == rank[v]) {
-                rank[u]++;
+            if (rank[pu] == rank[pv]) {
+                rank[pu]++;
             }
         }
     }
