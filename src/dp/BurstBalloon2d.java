@@ -22,11 +22,11 @@ public class BurstBalloon2d {
             // from 1 because appended '1' both sides of array
             // or starting index of window
             for (int i = 1; i <= (n - l + 1); i++) {
-                int j = i + l - 1;
+                int j = i + l - 1;                              // end index of current window [i...j]
 
                 int maxCost = Integer.MIN_VALUE;
 
-                // choosing 'k' to burst last
+                // choosing 'k'th index element to burst last
                 for (int k = i; k <= j; k++) {
                     int cost = dp[i][k - 1] +                       // left points
                             arr[i - 1] * arr[k] * arr[j + 1] +      // points gained when burst 'kth' element in [i...j]
@@ -38,7 +38,6 @@ public class BurstBalloon2d {
                 dp[i][j] = maxCost;
             }
         }
-
 
         return dp[1][n];            // since nums is modified front and back with(1)
 
