@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Two_Three_Four_Sum {
 
-
     List<List<Integer>> twoSum(int []arr, int target, int n) {
         Arrays.sort(arr);
         List<List<Integer>> list = new ArrayList<>();
@@ -17,8 +16,8 @@ public class Two_Three_Four_Sum {
                 s++; e--;
 
                 // avoid duplicates
-                while(s < e && arr[s] == arr[s-1]) s++;
-                while(s < e && arr[e] == arr[e+1]) e--;
+                while(s < e && arr[s] == arr[s - 1]) s++;
+                while(s < e && arr[e] == arr[e + 1]) e--;
 
             } else if((arr[s] + arr[e]) < target) {
                 s++;
@@ -55,8 +54,8 @@ public class Two_Three_Four_Sum {
                         s++; e--;
 
                         // avoid duplicates
-                        while(s < e && arr[s] == arr[s-1]) s++;
-                        while(s < e && arr[e] == arr[e+1]) e--;
+                        while(s < e && arr[s] == arr[s - 1]) s++;
+                        while(s < e && arr[e] == arr[e + 1]) e--;
 
                     } else if((arr[s] + arr[e]) < t) {
                         s++;

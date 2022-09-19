@@ -13,6 +13,7 @@ public class PallindromePartition {
         return true;
     }
 
+    // recursive
     int minPartition(int i, int n, String s, int[] dp) {
         if (i == n) {
             return 0;

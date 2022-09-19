@@ -30,9 +30,9 @@ public class BurstBalloonRecursive {
 
         int maxCost = Integer.MIN_VALUE;
 
-        // for all values in [i...j]
+        // for all values in range [i...j] length
         for(int k = i ; k <=j ; k++) {
-            int cost = recursive(i, k-1,arr, dp) + arr[i-1]*arr[k]*arr[j+1] + recursive(k+1, j, arr, dp);
+            int cost = recursive(i, k-1, arr, dp) + recursive(k+1, j, arr, dp) + arr[i-1] * arr[k] * arr[j+1];
             maxCost = Math.max(maxCost, cost);
         }
 
