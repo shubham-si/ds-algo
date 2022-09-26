@@ -20,7 +20,7 @@ public class MinimumSwapsArraySort {
         boolean visited[] = new boolean[n];
         int swaps = 0;
 
-        for(int i = 0 ; i<n ; i++) {
+        for(int i = 0 ; i < n ; i++) {
             if (visited[i] || i == pairs.get(i).getValue()) {
                 // element already present at it's correct idx in sorted array
                 continue;

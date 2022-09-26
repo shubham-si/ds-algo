@@ -52,10 +52,10 @@ Directed graph using color with print path
 int n;
 vector<vector<int>> adj;
 vector<char> color;
-vector<int> parent;             // parent[i] = i
+vector<int> parent;
 int cycle_start, cycle_end;
 
-bool dfs(int src) {
+bool cycle_dfs(int src) {
     color[src] = 1;                       // grey
     for (int neighbour : adj[src]) {
         if (color[neighbour] == 0) {            // not visited
@@ -74,11 +74,11 @@ bool dfs(int src) {
 
 void print_cycle() {
     color.assign(n, 0);
-    parent.assign(n, -1);
+    parent.assign(n, -1);               //  parent[i] = i
     cycle_start = -1;
 
     for (int v = 0; v < n; v++) {
-        if (color[v] == 0 && dfs(v))
+        if (color[v] == 0 && cycle_dfs(v))
             break;
     }
 

@@ -39,6 +39,8 @@ public class PrimsUsingPQ {
 
         // src: {vertex, minimum_of_all_edges_wt_coming_to_src}
         PriorityQueue<Map.Entry<Integer, Integer>> pq= new PriorityQueue<>((a , b) -> Integer.compare(a.getValue(), b.getValue()));
+
+        // reaching src from src takes 0 cost or "minimum reaching cost"
         pq.offer(PairUtil.Of(src, dist[src]));
 
         while (!pq.isEmpty()) {
