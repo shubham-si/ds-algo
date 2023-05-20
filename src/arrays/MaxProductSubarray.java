@@ -1,9 +1,10 @@
 package arrays;
 
+// https://leetcode.com/problems/maximum-product-subarray/
 public class MaxProductSubarray {
 
     public static void main(String ...args) {
-        int []array = {-2,0,-2,4,0,3,-3,-1,-5};
+        int []array = {-2,0,-2,4,0,3,-3,-1,-5};                     // [3,-3,-1] => 9
         System.out.println(getMaxProdSubArray(array));
     }
 

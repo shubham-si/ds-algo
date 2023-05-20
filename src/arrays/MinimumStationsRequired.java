@@ -31,7 +31,7 @@ public class MinimumStationsRequired {
         return globMinPlat;
     }
 
-    // PriorityQueue
+    // PrioritQueue
     // // T(nlogn), S(n)
     int minStationsQueue(int []arr, int []dep, int n) {
         int platCount = 1;

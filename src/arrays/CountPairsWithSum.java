@@ -10,13 +10,14 @@ class CountPairsWithSum {
 
         int t_c =0 ;
         for(int i=0; i<n; i++) {
-            // contains target => add the frequency
+            // contains pair entry => add the frequency of that entry : (a+b) = target
             if(map.containsKey(target-arr[i])) {
                 t_c+= map.get(target-arr[i]);
             }
             if (!map.containsKey(arr[i])) {
                 map.put(arr[i], 0);
             }
+            // update frequency
             map.put(arr[i], map.get(arr[i]) + 1);
         }
         return t_c;
