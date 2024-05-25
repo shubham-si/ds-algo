@@ -23,7 +23,7 @@ package arrays;
 public class LowerUpperBound {
 
     // ~ treeSet.ceiling()
-    // returns lowest index i: arr[i] >= ele
+    // returns "lowest" index i: arr[i] >= ele
     public static int lower_bound(Integer []arr, int n, int ele) {
 
         int low = 0, high = n - 1;
@@ -43,7 +43,7 @@ public class LowerUpperBound {
     }
 
     // ~ treeSet.higher()
-    // returns lowest index i: arr[i] > ele
+    // returns "lowest" index i: arr[i] > ele
     public static int upper_bound(Integer []arr, int n, int ele) {
 
         int low = 0, high = n - 1;
