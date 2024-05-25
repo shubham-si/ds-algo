@@ -27,7 +27,7 @@ public class LIS_BinarySearch {
 
             } else {
                 // since set is sorted set
-                // returns ceil: arr[ceil] >= arr[i]
+                // returns ceil: arr[ceil] >= arr[i] or lower_bound
                 Integer ceil = set.ceiling(arr[i]);
 
                 set.remove(ceil);

@@ -2,20 +2,19 @@ package arrays;
 
 /*
 
-  lower_bound(ele) => returns index i: arr[i] >= ele
-  upper_bound(ele) => returns index i: arr[i] > ele
+  lower_bound(ele) => returns lowest index i: arr[i] >= ele
+  upper_bound(ele) => returns lowest index i: arr[i] > ele
 
    eg., {1,3,4,4,5,7}
    lower_bound(1) = arr[0] = 1
    lower_bound(4) = arr[2] = 4
    lower_bound(6) = arr[5] = 7
 
-   lower_bound(8) = arr.length: 6 = null
-
+   lower_bound(8) = arr.length: 6 = null(-1)
 
    upper_bound(6) = arr[5] = 7
    upper_bound(1) = arr[1] = 3
-   upper_bound(7) = arr.length = null
+   upper_bound(7) = arr.length = null(-1)
 
   Note that here high index is set to n instead of n - 1.
   These functions can return an index which is one beyond the bounds of the array. I.e.,
@@ -23,19 +22,19 @@ package arrays;
  */
 public class LowerUpperBound {
 
-    // ~ set.ceiling()
-    // returns index i: arr[i] >= ele
+    // ~ treeSet.ceiling()
+    // returns lowest index i: arr[i] >= ele
     public static int lower_bound(Integer []arr, int n, int ele) {
 
-        // Note that here high index is set to n instead of n - 1.
-        int low = 0, high = n;
+        int low = 0, high = n - 1;
 
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
 
             if (ele <= arr[mid]) {
-                high = mid;             // instead of mid - 1
+                high = mid - 1;
             } else {
+                // ele > arr[mid]
                 low = mid + 1;
             }
         }
@@ -43,21 +42,20 @@ public class LowerUpperBound {
         return low;
     }
 
-    // ~ set.higher()
-    // returns index i: arr[i] > ele
+    // ~ treeSet.higher()
+    // returns lowest index i: arr[i] > ele
     public static int upper_bound(Integer []arr, int n, int ele) {
 
-        // Note that here high index is set to n instead of n - 1.
+        int low = 0, high = n - 1;
 
-        int low = 0, high = n;
-
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if (ele >= arr[mid]) {
-                low = mid + 1;             // as strictly greater
+            if (ele < arr[mid]) {
+                high = mid - 1;
             } else {
-                high = mid;                // as strictly greater
+                // ele >= arr[mid]
+                low = mid + 1;
             }
         }
 

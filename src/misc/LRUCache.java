@@ -8,7 +8,6 @@ public final class LRUCache<K, V> {
      * A doubly-linked-list implementation to save objects into the hashmap
      * as key-value pair.
      *
-     * @author sunil
      *
      * @param <K>
      * @param <V>

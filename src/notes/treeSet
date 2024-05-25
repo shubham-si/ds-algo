@@ -1,0 +1,9 @@
+> treeSet.lower(E ele) : arr[i] < ele || null : (returns greatest value in the set which is strictly less than ele)
+
+> treeSet.floor(E ele) : arr[i] <= ele || null : (returns the greatest element less than or equal to e, or null)
+
+(C++_lower_bound)
+> treeSet.ceiling(E ele) > returns lowest index i: arr[i] >= ele || null
+
+(C++_upper_bound)
+> treeSet.higher(E ele) > returns strictly lowest index i: arr[i] > ele || null
