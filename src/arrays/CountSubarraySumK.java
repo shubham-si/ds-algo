@@ -15,6 +15,7 @@ Subarrays with sum -10 are:
     and [-20, 10].
  */
 
+// https://leetcode.com/problems/subarray-sum-equals-k/description/
 // idea is to find sum(subarray's) or "<prefix sums> difference that equals to k" (target sum)
 public class CountSubarraySumK {
     public static int subArraySum(int[] arr, int n, int target)
