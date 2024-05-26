@@ -22,13 +22,13 @@ public class CountSubarraySumK {
         int c = 0, s = 0;
         // prefix sum's frequency
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for(int i = 0 ; i<n; i++) {
+        for(int i = 0 ; i < n; i++) {
             s = s + arr[i];
             if (s == target ) {
                 // means the 0...i subarray is 0 sum subarray
                 c++;
             }
-            // left to "cumulative sum" how many subarray's present with (s-sum)
+            // left to "cumulative sum" how many sub array's present with (s-sum)
             // eg .. -->  k = 7 => prefix sum array -->  14(p) ..... 14(q) ...... 21(i)
             // 14(2) means that > (p+1) --- i & also (q+1) --- i => sums(7)
             // also between  p & q --> we can say it is a 0-sum subarray that's why prefix sum repeated

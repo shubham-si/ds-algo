@@ -2,11 +2,12 @@
     a) lambda expression
        Comparator<R>: (t,u) -> compare_logic_integer
 
+       // in place sorted
        Collections.sort(list, comparator)
         or
        list.sort(comparator)
 
-    b) Comparator<R>.comparing(Function<T, U extends Comparable> keyExtractor, Comparator optional_keyComparator_override)
+    b) Comparator<R>.comparing(Function<T, U extends Comparable> keyExtractor, Comparator? keyComparator_override)
 
        a)  Comparator<Employee>.comparing(Employee::getName or e -> e.getName())
             getName: U: since string implements Comparable <compareTo(T t): Integer>

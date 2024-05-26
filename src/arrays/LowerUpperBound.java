@@ -2,8 +2,8 @@ package arrays;
 
 /*
 
-  lower_bound(ele) => returns lowest index i: arr[i] >= ele
-  upper_bound(ele) => returns lowest index i: arr[i] > ele
+  lower_bound(ele) => returns "lowest" index i: arr[i] >= ele
+  upper_bound(ele) => returns "lowest" index i: arr[i] > ele
 
    eg., {1,3,4,4,5,7}
    lower_bound(1) = arr[0] = 1
@@ -21,7 +21,7 @@ package arrays;
   it will return the size of the array if the search key is not found and it is greater than all the array elements.
  */
 public class LowerUpperBound {
-
+    // https://leetcode.com/problems/search-insert-position/
     // ~ treeSet.ceiling()
     // returns "lowest" index i: arr[i] >= ele
     public static int lower_bound(Integer []arr, int n, int ele) {
@@ -31,7 +31,7 @@ public class LowerUpperBound {
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if (ele <= arr[mid]) {
+            if (arr[mid] >= ele) {
                 high = mid - 1;
             } else {
                 // ele > arr[mid]
@@ -39,6 +39,7 @@ public class LowerUpperBound {
             }
         }
 
+        // "lowest" index
         return low;
     }
 
@@ -51,7 +52,7 @@ public class LowerUpperBound {
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if (ele < arr[mid]) {
+            if (arr[mid] > ele) {
                 high = mid - 1;
             } else {
                 // ele >= arr[mid]
@@ -59,6 +60,7 @@ public class LowerUpperBound {
             }
         }
 
+        // "lowest" index
         return low;
     }
 
