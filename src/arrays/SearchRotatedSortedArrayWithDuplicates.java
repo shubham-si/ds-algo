@@ -1,6 +1,6 @@
 package arrays;
 
-public class SearchSortedArrayWithDuplicates {
+public class SearchRotatedSortedArrayWithDuplicates {
 
     public int search(int[] arr, int k) {
         int s = 0 , e = arr.length - 1;
@@ -12,10 +12,12 @@ public class SearchSortedArrayWithDuplicates {
                 return m;
             }
 
-            // edge case: when ele at 's' and 'e' are same
-            // eg., [2,5,6,0,0,1,2]
-            // creates confusion as in which direction to follow
-            // thus .,
+            // edge case:
+            // arr[start] == arr[mid] could be possible
+            // the first half could be out of order (i.e. not in the ascending order)
+            // eg., [3, 1, 2, 3, 3, 3, 3]
+            // In that case, it is guaranteed that arr[high] also equal to arr[mid] > arr[mid] == arr[low] == arr[high]
+            // adjust search space by updating positions by 1
             if (arr[s] == arr[m] && arr[e] == arr[m]) {
                 s++;
                 e--;

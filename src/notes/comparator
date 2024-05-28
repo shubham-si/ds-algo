@@ -9,8 +9,8 @@
 
     b) Comparator<R>.comparing(Function<T, U extends Comparable> keyExtractor, Comparator? keyComparator_override)
 
-       a)  Comparator<Employee>.comparing(Employee::getName or e -> e.getName())
+       a)  Comparator<Employee>.comparing(Employee::getName or obj -> obj.getName())
             getName: U: since string implements Comparable <compareTo(T t): Integer>
 
        b) Custom field saying field doesn't implements Comparable
-            Comparator<Employee>.comparing(Employee::getField or e -> e.getField(), (f1, f2) -> compare_logic_integer)
+            Comparator<Object>.comparing(Object::getField or obj -> obj.getField(), (f1, f2) -> compare_logic_integer)
