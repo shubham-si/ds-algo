@@ -44,14 +44,13 @@ public class PrimeFactorization {
         for (int i = 2; i*i <= N ; i++) {
             if (smallestPrimeFactor[i] == i) {
                 // i: prime number
-                smallestPrimeFactor[i] = highestPrimeFactor[i] = i;
                 // i*i (additional optimised)
                 // say 13 > before [2,5,7,11] -> these already marked its multiples non-prime >  last 11 * 13 (already done by 11)
                 for (int j = 2 * i; j <= N ; j += i) {
-                    highestPrimeFactor[j] = i;
                     if (smallestPrimeFactor[j] == j) {
                         smallestPrimeFactor[j] = i;
                     }
+                    highestPrimeFactor[j] = i;
                 }
             }
         }
