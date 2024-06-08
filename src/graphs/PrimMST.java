@@ -1,6 +1,6 @@
 package graphs;
 
-// O(V2) : works on undirected connected graph
+// O(V^2) : works on undirected connected graph
 // Prim’s algorithm gives connected component as well as it works only on undirected connected graph.
 // Minimum Spanning Tree with V vertices will have (V - 1) edges.
 

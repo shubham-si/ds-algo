@@ -3,7 +3,7 @@ package heaps;
 import java.util.ArrayList;
 
 public class MinHeap {
-	
+
 	int capacity;
 	// Array representation of minHeap
 	ArrayList<Integer> nodes;
@@ -14,7 +14,7 @@ public class MinHeap {
 		this.nodes = new ArrayList<Integer>(capacity);
 		//this.currSize = 0;
 	}
-	
+
 	// minHeap
 	public void offer(int val) {
 		if(currSize == this.capacity) {
@@ -29,7 +29,7 @@ public class MinHeap {
 		}
 		this.currSize++;
 	}
-	
+
 	public Integer peek() {
 		if (this.currSize == 0) {
 			System.out.println("No elements to show");
@@ -37,7 +37,7 @@ public class MinHeap {
 		}
 		return this.nodes.get(0);
 	}
-	
+
 	public Integer poll() {
 		if (this.currSize == 0) {
 			System.out.println("No elements to show");
@@ -53,7 +53,7 @@ public class MinHeap {
 		}
 		return val;
 	}
-	
+
 	public void show() {
 		int index = this.currSize;
 		for (int i = 0; i < (index / 2); i++) {
@@ -65,60 +65,60 @@ public class MinHeap {
 			System.out.println();
 		}
 	}
-	
+
 	private void swap(int i,int j) {
 		int vali = nodes.get(i);
 		int valj = nodes.get(j);
 		nodes.set(i, valj);
 		nodes.set(j, vali);
 	}
-	
+
 	// 0 based indexing, #bubbling down
-	public void minHeapify(int i) {
-		int left = this.left(i);
-		int right = this.right(i);
-		int smallest = i;
+	public void minHeapify(int index) {
+		int left = this.left(index);
+		int right = this.right(index);
+		int smallest = index;
 		if (left < this.currSize && this.nodes.get(left) < this.nodes.get(smallest)) {
 			smallest = left;
 		}
 		if (right < this.currSize && this.nodes.get(right) < this.nodes.get(smallest)) {
 			smallest = right;
 		}
-		if (i != smallest) {
-			this.swap(i,smallest);
+		if (index != smallest) {
+			this.swap(index,smallest);
 			this.minHeapify(smallest);
 		}
 	}
-	
+
 	// 0 based indexing
-	public void maxHeapify(int i) {
-		int left = this.left(i);
-		int right = this.right(i);
-		int largest = i;
+	public void maxHeapify(int index) {
+		int left = this.left(index);
+		int right = this.right(index);
+		int largest = index;
 		if (left < this.currSize && this.nodes.get(left) > this.nodes.get(largest)) {
 			largest = left;
 		}
 		if (right < this.currSize && this.nodes.get(right) > this.nodes.get(largest)) {
 			largest = right;
 		}
-		if (i != largest) {
-			this.swap(i,largest);
+		if (index != largest) {
+			this.swap(index,largest);
 			this.minHeapify(largest);
 		}
 	}
-	
+
 	// 0 based indexing
 	public void buildHeap() {
 		for(int i = this.parent(this.currSize); i >= 0 ;i--) {
 			this.minHeapify(i);
 		}
 	}
-	
+
 	// 0 based indexing
 	public Integer parent(int i) {
 		return (i - 1) / 2;
 	}
-	
+
 	// 0 based indexing
 	public boolean isLeaf(int i) {
 		if (left(i) >= this.currSize || right(i) >= this.currSize) {
@@ -126,25 +126,25 @@ public class MinHeap {
 		}
 		return false;
 	}
-	
+
 	private Integer left(int i) {
-		return (2*i + 1);
+		return (2 * i + 1);
 	}
-	
+
 	private Integer right(int i) {
-		return (2*i + 2);
+		return (2 * i + 2);
 	}
-	
+
 	public static void main(String ...strings) {
 	    MinHeap minHeap = new MinHeap(7);
 	    minHeap.offer(16);
 	    minHeap.offer(3);
 	    minHeap.offer(13);
-	    minHeap.offer(7);        
+	    minHeap.offer(7);
         minHeap.offer(9);
 	    minHeap.offer(21);
 	    minHeap.offer(12);
-	    System.out.println("The Min Heap is : " + minHeap.nodes.toString());	    
+	    System.out.println("The Min Heap is : " + minHeap.nodes.toString());
 	    minHeap.buildHeap();
 		System.out.println("The Min Heap is : " + minHeap.nodes.toString());
 	    System.out.println(minHeap.poll());

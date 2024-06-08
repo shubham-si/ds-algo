@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-//A class to store a graph edge
+// class to store a graph edge
 class Edge {
     int source, dest, weight;
 

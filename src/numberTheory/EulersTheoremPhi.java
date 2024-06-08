@@ -26,7 +26,7 @@ public class EulersTheoremPhi {
             }
         }
         if (n > 1) {
-            // only prime exists that divides res
+            // only prime left that divides res
             res = res - res / n;
             factors.add(n);
         }

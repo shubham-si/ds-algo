@@ -22,6 +22,7 @@ package arrays;
  */
 public class LowerUpperBound {
     // https://leetcode.com/problems/search-insert-position/
+
     // ~ treeSet.ceiling()
     // returns "lowest" index i: arr[i] >= ele
     public static int lower_bound(Integer []arr, int n, int ele) {

@@ -21,7 +21,7 @@ public class PrimeFactorization {
             }
         }
         if (n > 1) {
-            // only prime exists that divides n
+            // only prime left that divides n
             pf.put(n, 1 + pf.getOrDefault(n, 0));
         }
         System.out.println(pf);
