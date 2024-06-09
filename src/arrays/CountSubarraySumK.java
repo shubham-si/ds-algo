@@ -36,11 +36,7 @@ public class CountSubarraySumK {
             if (map.containsKey(s - target)) {
                 c += map.get(s - target);
             }
-            if(!map.containsKey(s)) {
-                map.put(s, 0);
-            }
-            map.put(s, map.get(s) + 1);
-
+            map.put(s, map.getOrDefault(s, 0) + 1);
         }
         return c;
     }

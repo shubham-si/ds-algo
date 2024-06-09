@@ -27,18 +27,18 @@ public class CountAll_Any_K_SumPaths {
             count++;
         }
 
-        // get prefix sum present in current path
-        count += prefixMap.getOrDefault(currentNodeSum - target, 0);
-
         // add current instance currentNodeSum to map
         prefixMap.put(currentNodeSum, prefixMap.getOrDefault(currentNodeSum, 0) + 1);
+
+        // get prefix sum present in current path
+        count += prefixMap.getOrDefault(currentNodeSum - target, 0);
 
         int leftC = pathSumMap(node.left, currentNodeSum, target);
         int rightC = pathSumMap(node.right, currentNodeSum, target);
 
         count += leftC + rightC;
 
-        // remove current instance currentNodeSum from map i.e., (runningSum + root.data)
+        // this root is done, remove current instance currentNodeSum from map i.e., (runningSum + root.data)
         prefixMap.put(currentNodeSum, prefixMap.get(currentNodeSum) - 1);
         return count;
     }

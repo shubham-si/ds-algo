@@ -35,7 +35,7 @@ public class LowerUpperBound {
             if (arr[mid] >= ele) {
                 high = mid - 1;
             } else {
-                // ele > arr[mid]
+                // arr[mid] > ele
                 low = mid + 1;
             }
         }
@@ -56,7 +56,7 @@ public class LowerUpperBound {
             if (arr[mid] > ele) {
                 high = mid - 1;
             } else {
-                // ele >= arr[mid]
+                // arr[mid] <= ele
                 low = mid + 1;
             }
         }
