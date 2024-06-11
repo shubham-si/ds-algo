@@ -14,7 +14,7 @@ public class PrimeFactorization {
     // O(logn)
     public static void factorizationWithoutSieve(int n) {
         Map<Integer, Integer> pf = new HashMap();
-        for (int i = 2; i*i <= n ; i++) {
+        for (int i = 2; i * i <= n ; i++) {
             while (n % i == 0) {
                 pf.put(i, 1 + pf.getOrDefault(i, 0));
                 n = n / i;
