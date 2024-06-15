@@ -49,6 +49,7 @@ public class KthUnion {
 		return KthRecursive(A,lenA,temp,lenB-j,k-j);
 	}
 
+	// O(k)
 	static int KthIterative(int arr1[], int arr2[], int k) {
 		int n = arr1.length, m = arr2.length;
 		int i = 0, j = 0, k_index = 0, ele = -1;
