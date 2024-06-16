@@ -30,8 +30,8 @@ import java.util.*;
     Input: nums = [1,2,3,3,4,5]
     Output: true
     Explanation: nums can be split into the following subsequences:
-    [1,2,3,3,4,5] --> 1, 2, 3
-    [1,2,3,3,4,5] --> 3, 4, 5
+    [[1,2,3],3,4,5] --> 1, 2, 3
+    [1,2,3,[3,4,5]] --> 3, 4, 5
 
     Input: nums = [1,2,3,4,4,5]
     Output: false
