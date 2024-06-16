@@ -2,7 +2,8 @@ package leetcode;
 
 import java.util.*;
 
-// https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/submissions/
+// https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
+//  https://leetcode.com/problems/hand-of-straights/
 /*
     Given an array of integers nums and a positive integer k, check whether it is possible to divide this array into sets of k consecutive numbers.
 
