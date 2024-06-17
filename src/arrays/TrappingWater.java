@@ -28,23 +28,24 @@ public class TrappingWater {
 
     // O(n), O(n)
     static long trappingWaterUsingStack(int arr[], int n) {
-        int res = 0, l = 0;
+        int res = 0, i = 0;
         // stack of lower heights
         Stack<Integer> stack = new Stack();
 
-        while(l < n) {
-            while (!stack.empty() && arr[l] > arr[stack.peek()]) {
+        while(i < n) {
+            while (!stack.empty() && arr[i] > arr[stack.peek()]) {
                 int topTower = arr[stack.pop()];
                 if (stack.empty()) {
                     // nothing to compare
                     break;
                 }
-                int w = (l - 1) - stack.peek();
-                int h = Math.min(arr[stack.peek()], arr[l]) - topTower;
+                // excluding ith index
+                int w = (i - 1) - stack.peek();
+                int h = Math.min(arr[stack.peek()], arr[i]) - topTower;
                 res += w * h;
             }
-            stack.push(l);
-            l++;
+            stack.push(i);
+            i++;
         }
         return res;
     }
