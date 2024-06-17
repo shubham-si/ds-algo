@@ -44,6 +44,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
 
     // Note: each sequence first try to fit into a existing sequence before creating its new sequence
 
+    // O(N*logN)
     public boolean isPossibleUsingPQueue(int[] nums) {
 
         // Pair<st_num, end_num>  ==> length = (end_num - st_num + 1)
@@ -56,6 +57,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
 
                 return la - lb;
             }
+            // arr is: **sorted in non-decreasing order**
             // else sort pairs by end_value
             return a.getValue() - b.getValue();
         });
@@ -65,6 +67,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
             while (!pq.isEmpty() && (pq.peek().getValue() + 1) < num) {
                 // current pq.peek() bucket is done, since array sorted in non-decreasing order
                 Map.Entry<Integer, Integer> peek = pq.poll();
+                // bucket removal and check
                 int lenBucket =  peek.getValue() - peek.getKey() + 1;
                 if (lenBucket < 3) {
                     return false;
@@ -119,7 +122,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
                 nextPossibleNumberMap.put(num, nextPossibleNumberMap.get(num) - 1);
                 freq.put(num, freq.get(num) - 1);
 
-                // add room for next number possibility
+                // add room for next number possibility for this bucket where this num added : hypothetically
                 nextPossibleNumberMap.put(num + 1, nextPossibleNumberMap.getOrDefault(num + 1 , 0) + 1);
             } else {
 
@@ -131,7 +134,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
                     freq.put(i, freq.get(i) - 1);
                 }
 
-                // add room for next number possibility after (num, num + 1, num + 2)
+                // add room for next number possibility after (num, num + 1, num + 2) for this bucket: hypothetically
                 nextPossibleNumberMap.put(num + 3, nextPossibleNumberMap.getOrDefault(num + 3 , 0) + 1);
             }
         }
