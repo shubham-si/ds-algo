@@ -6,7 +6,7 @@ import java.util.*;
 // https://leetcode.com/problems/split-array-into-consecutive-subsequences
 
 /*
-    You are given an integer array nums that is sorted in non-decreasing order.
+    You are given an integer array nums that is **sorted in non-decreasing order**.
 
     Determine if it is possible to split nums into one or more subsequences such that both of the following conditions are true:
 
@@ -14,12 +14,11 @@ import java.util.*;
         All subsequences have a length of 3 or more.
         Return true if you can split nums according to the above conditions, or false otherwise.
 
+        Note** >> (without disturbing the relative positions of the remaining elements)
+
     A subsequence of an array is a new array that is formed from
     the original array by deleting some (can be none) of the elements without disturbing the relative positions of the remaining elements.
     (i.e., [1,3,5] is a subsequence of [1,2,3,4,5] while [1,3,2] is not).
-
-    Note** >> (without disturbing the relative positions of the remaining elements)
-
 
     Input: nums = [1,2,3,3,4,4,5,5]
     Output: true
@@ -42,6 +41,8 @@ public class SplitArrayIntoConsecutiveSubsequence {
 
     // isPossibleUsingPQueue()
     // isPossibleUsingMaps()
+
+    // Note: each sequence first try to fit into a existing sequence before creating its new sequence
 
     public boolean isPossibleUsingPQueue(int[] nums) {
 
@@ -95,11 +96,12 @@ public class SplitArrayIntoConsecutiveSubsequence {
         return true;
     }
 
+    // **sorted in non-decreasing order**
     public boolean isPossibleUsingMaps(int[] nums) {
         HashMap<Integer, Integer> freq = new HashMap<>();
 
         // hypothetical map -> which tells current num can be part of some bucket
-        HashMap<Integer, Integer> followMap = new HashMap<>();
+        HashMap<Integer, Integer> nextPossibleNumberMap = new HashMap<>();
 
         for(int num: nums) {
             freq.put(num, freq.getOrDefault(num , 0) + 1);
@@ -112,16 +114,16 @@ public class SplitArrayIntoConsecutiveSubsequence {
             }
 
             // this num can be part of some previous bucket of len(>=3)
-            if (followMap.getOrDefault(num, 0) > 0) {
+            if (nextPossibleNumberMap.getOrDefault(num, 0) > 0) {
 
-                followMap.put(num, followMap.get(num) - 1);
+                nextPossibleNumberMap.put(num, nextPossibleNumberMap.get(num) - 1);
                 freq.put(num, freq.get(num) - 1);
 
                 // add room for next number possibility
-                followMap.put(num + 1, followMap.getOrDefault(num + 1 , 0) + 1);
+                nextPossibleNumberMap.put(num + 1, nextPossibleNumberMap.getOrDefault(num + 1 , 0) + 1);
             } else {
 
-                // check occurence for next 3 numbers
+                // check occurrence for next 3 numbers
                 for (int i = num; i < (num + 3); i++) {
                     if (freq.getOrDefault(i, 0) <= 0) {
                         return false;
@@ -130,7 +132,7 @@ public class SplitArrayIntoConsecutiveSubsequence {
                 }
 
                 // add room for next number possibility after (num, num + 1, num + 2)
-                followMap.put(num + 3, followMap.getOrDefault(num + 3 , 0) + 1);
+                nextPossibleNumberMap.put(num + 3, nextPossibleNumberMap.getOrDefault(num + 3 , 0) + 1);
             }
         }
 
@@ -138,6 +140,9 @@ public class SplitArrayIntoConsecutiveSubsequence {
     }
 
     public static void main(String[] args) {
-        System.out.print(new SplitArrayIntoConsecutiveSubsequence().isPossibleUsingMaps(new int[]{1,2,3,3,4,5}));
+        // // **sorted in non-decreasing order** only
+        System.out.println(new SplitArrayIntoConsecutiveSubsequence().isPossibleUsingMaps(new int[]{1,2,3,3,4,5}));
+        System.out.println(new SplitArrayIntoConsecutiveSubsequence().isPossibleUsingMaps(new int[]{1,3,3,2,4,4,5}));
+        System.out.println(new SplitArrayIntoConsecutiveSubsequence().isPossibleUsingPQueue(new int[]{1,3,3,2,4,4,5}));
     }
 }

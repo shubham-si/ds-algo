@@ -16,7 +16,7 @@ import java.util.*;
     Explanation: Array can be divided into [1,2,3] , [1,2,3]
  */
 public class DivideArrayKConsecutives {
-    public boolean isPossibleDivide(int[] nums, int k) {
+    public static boolean isPossibleDivide(int[] nums, int k) {
         // concept build a map[number]: freq
         // 1:2, 3:2, 2:2  => [1,2,3]:1 , [1,2,3]:1
         // sort the numbers
@@ -53,5 +53,9 @@ public class DivideArrayKConsecutives {
         }
 
         return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPossibleDivide(new int[]{5,1,0,6,4,5,3,0,8,9}, 2));
     }
 }
