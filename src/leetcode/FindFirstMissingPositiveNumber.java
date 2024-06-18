@@ -36,7 +36,7 @@ public class FindFirstMissingPositiveNumber {
             int correctIdxForArri = arr[i] - 1;
             if ((1 <= arr[i] && arr[i] <= arr.length) && (arr[i] != arr[correctIdxForArri])) {
                 //swap(arr[i], arr[arr[i] - 1]);
-                // move arr[i] to its proper place idx: (arr[i] - 1) > array is 0 based idx
+                // until arr[i] not its proper place (using: cyclic sort) > move arr[i] to its proper place idx: (arr[i] - 1) > array is 0 based idx
                 swap(arr, i, correctIdxForArri);
             } else {
                 i++;
