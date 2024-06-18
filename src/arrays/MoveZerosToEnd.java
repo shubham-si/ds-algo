@@ -6,7 +6,7 @@ public class MoveZerosToEnd {
     // t:O(n),  s:O(1)
     void moveZeros(int []arr) {
         int i = 0;
-        int j = 0;      // it will be pointing to zero's from left
+        int j = 0;      // it will be pointing to next zero
         while (i < arr.length) {
             if (arr[i] != 0) {
                 swap(arr, i , j);

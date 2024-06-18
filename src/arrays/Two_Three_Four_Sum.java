@@ -1,10 +1,12 @@
 package arrays;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Two_Three_Four_Sum {
 
-    List<List<Integer>> twoSum(int []arr, int target, int n) {
+    List<List<Integer>> twoSum(int[] arr, int target, int n) {
         Arrays.sort(arr);
         List<List<Integer>> list = new ArrayList<>();
 
@@ -13,13 +15,14 @@ public class Two_Three_Four_Sum {
         while (s < e) {
             if ((arr[s] + arr[e]) == target) {
                 list.add(Arrays.asList(arr[s], arr[e]));
-                s++; e--;
+                s++;
+                e--;
 
                 // avoid duplicates
-                while(s < e && arr[s] == arr[s - 1]) s++;
-                while(s < e && arr[e] == arr[e + 1]) e--;
+                while (s < e && arr[s] == arr[s - 1]) s++;
+                while (s < e && arr[e] == arr[e + 1]) e--;
 
-            } else if((arr[s] + arr[e]) < target) {
+            } else if ((arr[s] + arr[e]) < target) {
                 s++;
             } else {
                 e--;
@@ -36,34 +39,36 @@ public class Two_Three_Four_Sum {
         O(n2 + nlogn: sort)
         Avoid duplicates
      */
-    List<List<Integer>> threeSum(int []arr, int target) {
+    List<List<Integer>> threeSum(int[] arr, int target, int n) {
         Arrays.sort(arr);
         List<List<Integer>> list = new ArrayList<>();
 
-        for(int i = 0; i < arr.length - 2; i++) {
+        for (int i = 0; i < arr.length; i++) {
 
-            if (i == 0 || arr[i] != arr[i-1]) {     // avoid duplicates
-                int     s = (i + 1),                // a
-                        e = arr.length - 1,         // b
-                        t = (target - arr[i]);      // since 'i' is c
+            int s = (i + 1),                // a
+                e = arr.length - 1,         // b
+                t = (target - arr[i]);      // since 'i' is c
 
-                // TWO SUM
-                while (s < e) {
-                    if ((arr[s] + arr[e]) == t) {
-                        list.add(Arrays.asList(arr[i], arr[s], arr[e]));
-                        s++; e--;
+            // TWO SUM
+            while (s < e) {
+                if ((arr[s] + arr[e]) == t) {
+                    list.add(Arrays.asList(arr[i], arr[s], arr[e]));
+                    s++;
+                    e--;
 
-                        // avoid duplicates
-                        while(s < e && arr[s] == arr[s - 1]) s++;
-                        while(s < e && arr[e] == arr[e + 1]) e--;
+                    // avoid duplicates
+                    while (s < e && arr[s] == arr[s - 1]) s++;
+                    while (s < e && arr[e] == arr[e + 1]) e--;
 
-                    } else if((arr[s] + arr[e]) < t) {
-                        s++;
-                    } else {
-                        e--;
-                    }
+                } else if ((arr[s] + arr[e]) < t) {
+                    s++;
+                } else {
+                    e--;
                 }
             }
+
+            // avoid duplicates
+            while (i + 1 < n && arr[i + 1] == arr[i]) i++;
 
         }
         return list;
@@ -76,12 +81,12 @@ public class Two_Three_Four_Sum {
     O(n3 + nlogn: sort)
     Avoid duplicates
  */
-    List<List<Integer>> fourSum(int []arr, int target, int n) {
+    List<List<Integer>> fourSum(int[] arr, int target, int n) {
         Arrays.sort(arr);
         List<List<Integer>> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            int target1 = target - arr[0];                      // (t - c)
+            int target1 = target - arr[i];                      // (t - c)
 
             for(int j = i + 1; j < n; j++) {
                 int     s = j + 1,                              // a
