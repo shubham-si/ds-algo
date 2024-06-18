@@ -30,7 +30,7 @@ public class FindFirstMissingPositiveNumber {
     private static int findFirstMissingPositive(int[] arr) {
         int i = 0;
         // 1 <= x[i] <=n and
-        // if (x[x[i] - 1] != x[i]): not at proper place > swap(x[i], x[x[i] - 1)) > move x[i] to it's proper place
+        // x[i] is not at its proper place i.e idx: (x[i] - 1) > (x[i] != x[x[i] - 1]) > swap(x[i], x[x[i] - 1)) > move x[i] to it's proper place
         // else i++
         while (i < arr.length) {
             int correctIdxForArri = arr[i] - 1;

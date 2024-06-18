@@ -23,17 +23,17 @@ public class QuickSelect {
     public static int partition(int[] arr, int l, int r) {
         int pivot = arr[r];
         // index of the smaller element
-        int i = l-1;
-        for(int j=l; j<r; j++) {
+        int j = l - 1;
+        for(int i = l; i<r; i++) {
             // If current element is smaller than the pivot
-            if(arr[j] < pivot) {
-                i++;
+            if(arr[i] < pivot) {
+                j++;
                 swap(arr,i,j);
             }
         }
-        i++;
-        swap(arr, i, r);
-        return i;
+        j++;
+        swap(arr, j, r);
+        return j;
     }
 
     public static void swap(int []arr, int i, int j) {
