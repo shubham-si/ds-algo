@@ -14,3 +14,11 @@
 
        b) Custom field saying field doesn't implements Comparable
             Comparator<Object>.comparing(Object::getField or obj -> obj.getField(), (f1, f2) -> compare_logic_integer)
+
+
+    c) Map.Entry.?() -> overloaded methods:
+            comparingByKey(), comparingByValue()
+            comparingByKey(comparator), comparingByValue(comparator)
+
+       Queue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>(Map.Entry.comparingByKey()  or (a,b) -> a - b);
+       Queue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<>(Map.Entry.comparingByKey(Collections.reverseOrder()) or (a,b) -> b - a);
