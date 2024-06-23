@@ -19,9 +19,10 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
 
 import arrays.LongestSubarrayWithTargetSum;
 
-public class MaximumLengthContiguosArrayWith01 {
+public class MaximumLengthContiguosArrayWithEqual01s {
     // concept: make all 0's -> -1 and apply longestSubArrayWithZeroSum
     public int findMaxLength(int[] arr) {
+        // arr -> if arr[i] == 0 > arr[i] = -1
         return LongestSubarrayWithTargetSum.longestSubArrayWithTargetSum(arr, 0);
     }
 
