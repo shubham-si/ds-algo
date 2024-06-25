@@ -3,7 +3,7 @@ package arrays;
 //https://leetcode.com/problems/binary-subarrays-with-sum
 //related-prob: https://leetcode.com/problems/count-number-of-nice-subarrays/
 /*
-Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum goal.
+Given a binary array nums and an integer goal, return the number of non-empty sub-arrays with a sum goal.
 
 A subarray is a contiguous part of the array.
 
